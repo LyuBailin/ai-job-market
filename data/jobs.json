@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "version": "2026.07.25",
+    "last_updated": "2026-07-25",
+    "scope": "中国 AI 就业市场（含大模型、AI应用开发、CV、NLP、机器人算法等岗位）"
+  },
+  "ai_job_yoy": {
+    "title": "AI 岗位新发职位数同比增速（BOSS直聘口径）",
+    "unit": "%",
+    "source": "BOSS直聘《2026人才趋势报告》ECHO2026 大会发布",
+    "url": "https://new.qq.com/rain/a/20260123A063C500",
+    "data": [
+      { "date": "2023", "value": 8.5 },
+      { "date": "2024", "value": 36.5 },
+      { "date": "2025", "value": 74.1 }
+    ]
+  },
+  "supply_demand_ratio": {
+    "title": "大模型领域人才供需比（脉脉口径，供/需，<1 表示供不应求）",
+    "unit": "ratio",
+    "source": "脉脉《2024大模型人才报告》",
+    "url": "https://www.sohu.com/a/807119584_121888860",
+    "data": [
+      { "date": "2023", "value": 1.73, "scope": "大模型整体" },
+      { "date": "2024-H1", "value": 1.76, "scope": "大模型整体" }
+    ]
+  },
+  "talent_shortage_subfields": {
+    "title": "大模型细分岗位人才供需比（2024年1-7月，<1 表示紧缺）",
+    "unit": "ratio",
+    "source": "脉脉《2024大模型人才报告》",
+    "url": "https://post.smzdm.com/p/a3xo4p0k/",
+    "data": [
+      { "subfield": "云计算", "value": 0.33, "note": "3岗争1人" },
+      { "subfield": "搜索算法", "value": 0.5, "note": "估计值，连续2年TOP10紧缺" },
+      { "subfield": "大模型算法", "value": 0.6, "note": "估计值，连续2年TOP10紧缺" },
+      { "subfield": "DSP开发", "value": 0.7, "note": "估计值" },
+      { "subfield": "反欺诈/风控算法", "value": 0.7, "note": "估计值" }
+    ]
+  },
+  "top_growing_jobs_2024h1": {
+    "title": "2024上半年招聘职位数同比增速 TOP5（智联招聘+北大国发院）",
+    "unit": "%",
+    "source": "智联招聘+北京大学国家发展研究院《AI大模型对我国劳动力市场潜在影响研究：2024》",
+    "url": "https://www.sznews.com/news/content/2024-09/19/content_31222125.htm",
+    "data": [
+      { "rank": 1, "job": "自然语言处理（NLP）", "growth_pct": 111 },
+      { "rank": 2, "job": "机器人算法", "growth_pct": 76 },
+      { "rank": 3, "job": "深度学习", "growth_pct": 61 },
+      { "rank": 4, "job": "智能驾驶系统工程师", "growth_pct": 49 },
+      { "rank": 5, "job": "导航算法", "growth_pct": 47 }
+    ]
+  },
+  "top_growing_jobs_2025spring": {
+    "title": "2025春招首周热门岗位增速（智联招聘）",
+    "unit": "%",
+    "source": "智联招聘《2025年春招市场行业周报（第一期）》",
+    "url": "https://www.toutiao.com/article/7470796012232196620/",
+    "data": [
+      { "job": "人工智能工程师", "求职增速_pct": 69.6, "平均月薪_元": 21319, "scope": "求职端" },
+      { "job": "人工智能行业整体", "求职增速_pct": 33.4, "scope": "求职端" },
+      { "job": "AI 行业招聘需求", "growth_pct": 49.1, "scope": "招聘端" }
+    ]
+  },
+  "top_growing_jobs_2025_9": {
+    "title": "2025年9月新发 AI 岗位量同比（脉脉）",
+    "unit": "%",
+    "source": "脉脉高聘人才智库",
+    "url": "https://so.html5.qq.com/page/real/search_news?docid=70000021_385691d73da49352",
+    "data": [
+      { "date": "2025-09", "value": 1100, "scope": "AI 相关岗位整体", "note": "同比增长超11倍" }
+    ]
+  },
+  "top_growing_jobs_2025_jan_oct": {
+    "title": "2025年1-10月新发 AI 岗位量同比（脉脉）",
+    "unit": "%",
+    "source": "脉脉《2025年度人才迁徙报告》",
+    "url": "https://so.html5.qq.com/page/real/search_news?docid=70000021_4666a19b91894352",
+    "data": [
+      { "date": "2025-01~10", "value": 543, "scope": "AI 整体" },
+      { "date": "2025-09单月", "value": 1100, "scope": "AI 整体" }
+    ]
+  },
+  "top_jobs_by_demand_2025h1": {
+    "title": "2025上半年需求增速最快的细分 AI 岗位（脉脉）",
+    "unit": "%",
+    "source": "脉脉《2025年度人才迁徙报告》",
+    "url": "https://so.html5.qq.com/page/real/search_news?docid=70000021_4666a19b91894352",
+    "data": [
+      { "job": "智能体开发工程师", "growth_pct": 455, "avg_monthly_cny": 65000 },
+      { "job": "AI 产品经理", "growth_pct": 129, "avg_monthly_cny": 55000 },
+      { "job": "多模态算法工程师", "growth_pct": 80, "avg_monthly_cny": 80000 },
+      { "job": "算法工程师/AI 工程师", "growth_pct": 60, "avg_monthly_cny": null }
+    ]
+  },
+  "education_requirement_pct": {
+    "title": "AI 岗位学历要求分布",
+    "unit": "%",
+    "source": "脉脉《2024大模型人才报告》+ 智联招聘 2024H1",
+    "data": [
+      { "scope": "大模型领域 硕博要求占比", "value": 29.66, "year": "2024", "source_ref": "脉脉" },
+      { "scope": "新经济行业平均 硕博要求占比", "value": 11.28, "year": "2024", "source_ref": "脉脉" },
+      { "scope": "NLP 岗位硕博要求占比", "value": 35.8, "year": "2024H1", "source_ref": "智联" },
+      { "scope": "深度学习 硕博要求占比", "value": 45.5, "year": "2024H1", "source_ref": "智联" }
+    ]
+  },
+  "ai_jobs_cross_industry_2025": {
+    "title": "2025年非技术/跨行业 AI 岗位增速（BOSS直聘）",
+    "unit": "%",
+    "source": "BOSS直聘 ECHO2026",
+    "url": "https://new.qq.com/rain/a/20260123A063C500",
+    "data": [
+      { "scope": "销售/行政/商务类 AI 岗位", "growth_pct": 682 },
+      { "scope": "法律/咨询/HR 等专业服务 AI 岗位", "growth_pct": 200, "note": ">200%" },
+      { "scope": "高级管理 AI 岗位", "growth_pct": 139 },
+      { "scope": "电子半导体 新增 AI 岗位", "growth_pct": 162 },
+      { "scope": "消费零售/物流/制造业 AI 岗位", "growth_pct": 100, "note": "全部翻倍" }
+    ]
+  }
+}

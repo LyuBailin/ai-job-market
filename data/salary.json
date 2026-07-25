@@ -1,0 +1,150 @@
+{
+  "meta": {
+    "version": "2026.07.25",
+    "last_updated": "2026-07-25",
+    "scope": "中国 AI 岗位薪资，单位：人民币元/月（除非另注）"
+  },
+  "llm_algo_avg_monthly": {
+    "title": "大模型算法岗平均月薪（脉脉口径）",
+    "unit": "元/月",
+    "source": "脉脉高聘人才智库《2024大模型人才报告》+《2025春招职场安全感洞察》",
+    "data": [
+      { "date": "2023", "value": 45812, "scope": "大模型新发岗位" },
+      { "date": "2024-H1", "value": 46452, "scope": "大模型新发岗位" },
+      { "date": "2024-H1", "value": 67500, "scope": "大模型算法岗" },
+      { "date": "2025-1-2", "value": 68051, "scope": "大模型算法岗" }
+    ]
+  },
+  "new_economy_avg_monthly_2024h1": {
+    "title": "新经济行业平均月薪（对比基线）",
+    "unit": "元/月",
+    "value": 42713,
+    "as_of": "2024年1-7月",
+    "source": "脉脉《2024大模型人才报告》"
+  },
+  "top_jobs_salary_2025spring": {
+    "title": "2025春招高薪岗位TOP（脉脉）",
+    "unit": "元/月",
+    "source": "脉脉《2025春招职场安全感洞察》",
+    "url": "https://www.nbd.com.cn/articles/2025-03-25/3804085.html",
+    "data": [
+      { "rank": 1, "job": "大模型算法", "avg_monthly_cny": 68051, "type": "技术" },
+      { "rank": 2, "job": "人工智能工程师", "avg_monthly_cny": 60768, "type": "技术" },
+      { "rank": 3, "job": "算法工程师", "avg_monthly_cny": 52381, "type": "技术" },
+      { "rank": 4, "job": "AI 产品经理", "avg_monthly_cny": 49785, "type": "非技术" }
+    ]
+  },
+  "by_experience_2025spring_zhilian": {
+    "title": "人工智能工程师薪资 - 按经验（2025春招，智联招聘）",
+    "unit": "元/月",
+    "source": "智联招聘《2025春招市场行业周报》",
+    "url": "https://www.toutiao.com/article/7470796012232196620/",
+    "data": [
+      { "years": "1年以下", "avg_monthly_cny": 20600 },
+      { "years": "1-3年", "avg_monthly_cny": 21410 },
+      { "years": "3-5年", "avg_monthly_cny": 22267 },
+      { "years": "5年以上", "avg_monthly_cny": 35000, "note": "3.5万+" }
+    ]
+  },
+  "by_job_2024h1_zhilian": {
+    "title": "AI 细分岗位平均月薪（2024上半年，智联招聘）",
+    "unit": "元/月",
+    "source": "智联招聘 + 北大国发院",
+    "url": "https://www.sznews.com/news/content/2024-09/19/content_31222125.htm",
+    "data": [
+      { "job": "深度学习", "avg_monthly_cny": 26279, "yoy_pct": 2 },
+      { "job": "自然语言处理（NLP）", "avg_monthly_cny": 24007, "yoy_pct": 11 },
+      { "job": "AI 行业整体", "avg_monthly_cny": 13594, "note": "2024 Q2 全行业最高", "source_ref": "智联《中国企业招聘薪酬报告》" }
+    ]
+  },
+  "fresh_grad_2024_xinzhi": {
+    "title": "AI 行业应届生起薪（2024届，薪智）",
+    "unit": "元/月",
+    "source": "薪智《2025年Q2人工智能行业薪酬报告》",
+    "url": "https://www.sohu.com/a/881803091_122300151",
+    "data": [
+      { "degree": "大专", "avg_monthly_cny": 6333 },
+      { "degree": "本科", "avg_monthly_cny": 8783 },
+      { "degree": "硕士", "avg_monthly_cny": 11154 },
+      { "degree": "博士", "avg_monthly_cny": 20550 }
+    ]
+  },
+  "by_city_2024_ruifang": {
+    "title": "AI 行业按城市平均月薪（2024，锐仕方达）",
+    "unit": "元/月",
+    "source": "锐仕方达《2025年生成式人工智能薪酬报告》",
+    "url": "https://www.sohu.com/a/874161236_121877081",
+    "data": [
+      { "city": "北京", "avg_monthly_cny": 27397, "scope": "算法和模型层" },
+      { "city": "上海", "scope": "AI整体", "note": "硕士应届 35300" }
+    ]
+  },
+  "fresh_grad_city_diff_2025": {
+    "title": "应届生起薪城市差异（2025）",
+    "unit": "元/月",
+    "source": "薪智《2025年Q2人工智能行业薪酬报告》",
+    "url": "https://www.sohu.com/a/881803091_122300151",
+    "data": [
+      { "city": "北京", "index_vs_ningbo": 135.1 },
+      { "city": "深圳", "index_vs_ningbo": 130.2 },
+      { "city": "杭州", "index_vs_ningbo": 111.0 },
+      { "city": "广州", "index_vs_ningbo": 110.2 }
+    ],
+    "note": "以宁波=100为基准"
+  },
+  "top_paying_companies_2024": {
+    "title": "大模型领域高薪公司 TOP（2024年1-7月，脉脉）",
+    "unit": "元/月",
+    "source": "脉脉《2024大模型人才报告》",
+    "url": "https://post.smzdm.com/p/a3xo4p0k/",
+    "data": [
+      { "rank": 1, "company": "马上消费金融", "avg_monthly_cny": 84000 },
+      { "rank": 2, "company": "昆仑万维", "avg_monthly_cny": 70000 },
+      { "rank": 3, "company": "零一万物", "avg_monthly_cny": 58000, "note": ">5.8万" },
+      { "rank": 4, "company": "月之暗面", "avg_monthly_cny": 58000, "note": ">5.8万" },
+      { "rank": 5, "company": "vivo", "avg_monthly_cny": 58000, "note": ">5.8万" }
+    ]
+  },
+  "extreme_high_salary_2025_2026": {
+    "title": "极端高薪样本（2025-2026 校招/社招）",
+    "unit": "年薪(万元)",
+    "source": "脉脉/各企业公开 JD",
+    "url": "https://so.html5.qq.com/page/real/search_news?docid=70000021_66668e10dfe03252",
+    "data": [
+      { "company": "字节跳动（豆包业务）", "job": "大模型应用架构专家", "annual_cny_wan": 128, "year": "2026" },
+      { "company": "宇树科技", "job": "电机控制算法工程师", "annual_cny_wan": 100, "year": "2026春", "note": ">100万" },
+      { "company": "银河通用", "job": "多模态导航算法工程师", "annual_cny_wan": 100, "year": "2026春", "note": ">100万" },
+      { "company": "DeepSeek", "job": "深度学习研究员", "monthly_cny": 110000, "year": "2025" },
+      { "company": "字节跳动 2026校招", "job": "核心算法", "annual_cny_wan": 300, "year": "2026", "note": "清北算法博士" }
+    ]
+  },
+  "salary_premium_ratio": {
+    "title": "AI 职位薪资溢价（相对普通岗位，BOSS直聘）",
+    "unit": "倍数",
+    "source": "BOSS直聘 ECHO2026",
+    "url": "https://new.qq.com/rain/a/20260123A04FJF00",
+    "data": [
+      { "date": "2022", "value": 3.3 },
+      { "date": "2025", "value": 2.6, "note": "理性回调" }
+    ]
+  },
+  "ai_engineer_median_growth_2025": {
+    "title": "AI 工程师中位数薪资涨幅（2025）",
+    "unit": "%",
+    "value": 15.8,
+    "source": "BOSS直聘 ECHO2026",
+    "url": "https://new.qq.com/rain/a/20260123A04FJF00"
+  },
+  "working_hours": {
+    "title": "AI 从业者工作强度对比",
+    "unit": "小时/周",
+    "source": "脉脉高聘人才智库",
+    "url": "https://so.html5.qq.com/page/real/search_news?docid=70000021_385691d73da49352",
+    "data": [
+      { "region": "美国 AI 从业者", "weekly_hours": 90, "note": "中位数 80-100" },
+      { "region": "中国 AI 从业者", "weekly_hours": 50, "note": "约2/3低于60小时" },
+      { "region": "大模型从业者 周工时>50", "pct": 65.79 },
+      { "region": "大模型从业者 周工时>60", "pct": 32.9, "note": "日均>12小时" }
+    ]
+  }
+}

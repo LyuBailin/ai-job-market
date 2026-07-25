@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "version": "2026.07.25",
+    "last_updated": "2026-07-25",
+    "scope": "仅记录对中国 AI 就业市场有重大影响/直接关联的海外事件"
+  },
+  "global_market": {
+    "title": "全球 AI 产业规模",
+    "source": "IDC（信通院《人工智能发展报告2024》引用）",
+    "url": "https://www.sohu.com/a/842594701_121798711",
+    "data": [
+      { "date": "2024", "value": 6233, "unit": "亿美元", "yoy_pct": 21.5 },
+      { "date": "2024-H1", "value": 316, "unit": "亿美元", "scope": "AI 投融资", "yoy_pct": 84 }
+    ]
+  },
+  "china_us_salary_gap": {
+    "title": "中美 AI 工程师薪资差距（脉脉）",
+    "source": "脉脉高聘人才智库",
+    "url": "https://so.html5.qq.com/page/real/search_news?docid=70000021_385691d73da49352",
+    "data": [
+      { "metric": "普通程序员 中美薪酬差", "ratio": 7, "note": "约7倍" },
+      { "metric": "AI 工程师 中美薪酬差", "ratio": 2, "note": "约2倍，显著低于汇率差" }
+    ]
+  },
+  "global_top_funding_2025": {
+    "title": "2025 全球 AI 头部公司融资（境外）",
+    "source": "新浪财经/创投Plus",
+    "url": "https://new.qq.com/rain/a/20260109A03Y6H00",
+    "data": [
+      { "company": "OpenAI", "annual_investment_usd_yi": 400, "year": 2025 },
+      { "company": "xAI", "annual_investment_usd_yi": 250, "year": 2025 },
+      { "company": "Anthropic", "annual_investment_usd_yi": 165, "year": 2025 }
+    ]
+  },
+  "global_hiring_index_2025": {
+    "title": "2025全球 AI 工程师供需比",
+    "source": "翰德《2025人才趋势报告》",
+    "url": "https://so.html5.qq.com/page/real/search_news?docid=70000021_4666a19b91894352",
+    "data": [
+      { "metric": "AI 人才供需比", "value": 0.39, "note": "5岗争2人" },
+      { "metric": "客服专员/电话销售 需求变化", "value": -50, "unit": "%" },
+      { "metric": "翻译 需求变化", "value": -45, "unit": "%" },
+      { "metric": "会计文员 需求变化", "value": -40, "unit": "%" },
+      { "metric": "传统软件开发 需求变化", "value": -25, "unit": "%" }
+    ]
+  },
+  "global_ai_safety_summit_2024_2025": {
+    "title": "AI 安全峰会与监管（影响中国出口/部署）",
+    "source": "信通院《人工智能发展报告2024》",
+    "data": [
+      { "date": "2023-11", "event": "首届全球 AI 安全峰会（英国布莱切利园）" },
+      { "date": "2024-05", "event": "首尔 AI 峰会" },
+      { "date": "2024-11", "event": "AI 大模型产业创新发展大会（北京）" }
+    ]
+  },
+  "manus_acquired_2025": {
+    "title": "AI Agent 并购重磅",
+    "source": "新浪财经",
+    "url": "https://new.qq.com/rain/a/20260109A03Y6H00",
+    "data": [
+      { "date": "2025", "event": "通用 AI 智能体 ManusAI 被 Meta 以数十亿美元收购", "note": "AI Agent 成2026新战场" }
+    ]
+  }
+}

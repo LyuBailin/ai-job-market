@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>薪资行情 - 中国 AI 就业市场数据看板</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="dot"></span>中国 AI 就业市场<span class="sub">数据看板</span></div>
+      <nav class="nav">
+        <a href="../index.html">总览</a>
+        <a href="jobs.html">岗位供需</a>
+        <a href="salary.html">薪资行情</a>
+        <a href="companies.html">公司动态</a>
+        <a href="cities.html">城市分布</a>
+        <a href="policies.html">政策报告</a>
+        <a href="timeline.html">大事记</a>
+        <a href="global.html">海外速览</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="page-title">薪资行情</div>
+      <div class="page-subtitle">按岗位、经验、学历、城市、公司的薪资数据</div>
+    </div>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">大模型算法岗平均月薪（2023-2025）</div>
+        <div class="card-subtitle">来源：脉脉高聘人才智库（2024大模型人才报告 / 2025春招职场安全感洞察）</div>
+        <div class="chart tall" id="chart-llm-salary"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">2025春招 高薪岗位 TOP4</div>
+          <div class="card-subtitle">来源：脉脉《2025春招职场安全感洞察》</div>
+          <div class="chart" id="chart-high-salary"></div>
+        </div>
+        <div class="card">
+          <div class="card-title">AI 工程师薪资 - 按经验（2025春招）</div>
+          <div class="card-subtitle">来源：智联招聘</div>
+          <div class="chart" id="chart-by-experience"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">2024上半年 AI 细分岗位月薪</div>
+          <div class="card-subtitle">来源：智联招聘+北大国发院</div>
+          <div class="chart" id="chart-by-job"></div>
+        </div>
+        <div class="card">
+          <div class="card-title">AI 行业应届生起薪（2024届）</div>
+          <div class="card-subtitle">来源：薪智《2025年Q2薪酬报告》</div>
+          <div class="chart" id="chart-fresh-grad"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">高薪公司 TOP（2024，脉脉）</div>
+        <div class="card-subtitle">大模型领域新发岗位平均月薪</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>排名</th><th>公司</th><th class="num">平均月薪</th></tr>
+            </thead>
+            <tbody id="top-companies-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">2025-2026 极端高薪样本（公开 JD / 报道）</div>
+        <div class="card-subtitle">仅作参考样本，来源：脉脉 / 公开报道</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>公司</th><th>岗位</th><th class="num">薪酬</th><th>时间</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>字节跳动（豆包）</td><td>大模型应用架构专家</td><td class="num">128 万/年</td><td>2026</td></tr>
+              <tr><td>字节跳动 2026校招</td><td>核心算法（清北博士）</td><td class="num">300 万/年</td><td>2026</td></tr>
+              <tr><td>宇树科技</td><td>电机控制算法工程师</td><td class="num">&gt;100 万/年</td><td>2026春</td></tr>
+              <tr><td>银河通用</td><td>多模态导航算法工程师</td><td class="num">&gt;100 万/年</td><td>2026春</td></tr>
+              <tr><td>DeepSeek</td><td>深度学习研究员</td><td class="num">8-11 万/月</td><td>2025</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">AI 岗位薪资溢价 / 涨幅</div>
+        <div class="card-subtitle">来源：Boss直聘 / 脉脉</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>指标</th><th>数值</th><th>时间</th><th>来源</th></tr></thead>
+            <tbody>
+              <tr><td>AI 岗位薪资溢价（vs 普通岗）</td><td>2.6 倍</td><td>2025</td><td>Boss直聘</td></tr>
+              <tr><td>AI 岗位薪资溢价（vs 普通岗）</td><td>3.3 倍</td><td>2022</td><td>Boss直聘</td></tr>
+              <tr><td>AI 工程师中位数薪资涨幅</td><td>+15.8%</td><td>2025</td><td>Boss直聘</td></tr>
+              <tr><td>涨薪率（近12个月）</td><td>0.8%</td><td>2024Q2-2025Q1</td><td>薪智</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">AI 从业者工作强度（中国 vs 美国）</div>
+        <div class="card-subtitle">来源：脉脉高聘人才智库</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>指标</th><th>数值</th></tr></thead>
+            <tbody>
+              <tr><td>美国 AI 从业者周工时中位数</td><td>80-100 小时</td></tr>
+              <tr><td>中国 AI 从业者中约 2/3 周工时</td><td>&lt;60 小时</td></tr>
+              <tr><td>大模型从业者 周工时 &gt; 50 小时占比</td><td>65.79%</td></tr>
+              <tr><td>大模型从业者 周工时 &gt; 60 小时占比（日均&gt;12小时）</td><td>32.9%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/js/charts.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (async function() {
+      const salary = await AJ.load('../data/salary.json');
+
+      // 1. 大模型算法岗薪资
+      renderLineChart('chart-llm-salary',
+        [{ name: '大模型算法岗', data: salary.llm_algo_avg_monthly.data.map(d => d.value) }],
+        {
+          xData: salary.llm_algo_avg_monthly.data.map(d => d.date),
+          yLabelFormatter: v => v >= 1000 ? (v / 1000) + 'k' : v,
+        }
+      );
+
+      // 2. 高薪岗位 TOP
+      const highSal = salary.top_jobs_salary_2025spring.data;
+      renderBarChart('chart-high-salary',
+        highSal.map(s => s.job),
+        highSal.map(s => s.avg_monthly_cny),
+        { unit: ' 元/月', rotate: 15 }
+      );
+
+      // 3. 按经验
+      const byExp = salary.by_experience_2025spring_zhilian.data;
+      renderBarChart('chart-by-experience',
+        byExp.map(d => d.years),
+        byExp.map(d => d.avg_monthly_cny),
+        { unit: ' 元/月' }
+      );
+
+      // 4. 按岗位（2024H1）
+      const byJob = salary.by_job_2024h1_zhilian.data;
+      renderBarChart('chart-by-job',
+        byJob.map(d => d.job),
+        byJob.map(d => d.avg_monthly_cny),
+        { unit: ' 元/月', rotate: 12 }
+      );
+
+      // 5. 应届生
+      const fg = salary.fresh_grad_2024_xinzhi.data;
+      renderBarChart('chart-fresh-grad',
+        fg.map(d => d.degree),
+        fg.map(d => d.avg_monthly_cny),
+        { unit: ' 元/月' }
+      );
+
+      // 6. 高薪公司
+      const tbody = document.getElementById('top-companies-tbody');
+      salary.top_paying_companies_2024.data.forEach(c => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td class="rank">${c.rank}</td><td>${c.company}</td><td class="num">¥${c.avg_monthly_cny.toLocaleString('zh-CN')}</td>`;
+        tbody.appendChild(tr);
+      });
+    })();
+  </script>
+</body>
+</html>

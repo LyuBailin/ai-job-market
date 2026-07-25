@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>海外速览 - 中国 AI 就业市场数据看板</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="dot"></span>中国 AI 就业市场<span class="sub">数据看板</span></div>
+      <nav class="nav">
+        <a href="../index.html">总览</a>
+        <a href="jobs.html">岗位供需</a>
+        <a href="salary.html">薪资行情</a>
+        <a href="companies.html">公司动态</a>
+        <a href="cities.html">城市分布</a>
+        <a href="policies.html">政策报告</a>
+        <a href="timeline.html">大事记</a>
+        <a href="global.html">海外速览</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="page-title">海外速览</div>
+      <div class="page-subtitle">仅记录对中国 AI 就业市场有重大影响或直接关联的海外事件</div>
+    </div>
+
+    <div class="notice">
+      <strong>说明：</strong>本看板以中国 AI 就业市场为主，海外数据仅作为参考上下文（如全球市场规模、薪酬对比、监管协同等）。
+      详细海外资讯请参考 <a href="https://www.theinformation.com" target="_blank">The Information</a> / <a href="https://techcrunch.com" target="_blank">TechCrunch</a> / <a href="https://www.a16z.com" target="_blank">a16z</a> 等。
+    </div>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">全球 AI 产业规模（2024）</div>
+        <div class="card-subtitle">来源：IDC（信通院《人工智能发展报告2024》引用）</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>指标</th><th class="num">数值</th><th>时间</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>全球 AI 产业规模</td><td class="num">6,233 亿美元</td><td>2024</td></tr>
+              <tr><td>同比增长</td><td class="num">+21.5%</td><td>2024</td></tr>
+              <tr><td>2024 H1 AI 投融资</td><td class="num">316 亿美元</td><td>2024H1</td></tr>
+              <tr><td>2024 H1 AI 投融资同比</td><td class="num">+84%</td><td>2024H1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">中美 AI 工程师薪资差距（脉脉）</div>
+        <div class="card-subtitle">来源：脉脉高聘人才智库</div>
+        <div class="chart" id="chart-cn-us"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">2025 全球 AI 头部公司年度融资</div>
+        <div class="card-subtitle">来源：新浪财经/创投Plus</div>
+        <div class="chart" id="chart-global-funding"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">2025 全球 AI 岗位 / 受冲击岗位变化</div>
+        <div class="card-subtitle">来源：翰德《2025人才趋势报告》</div>
+        <div class="chart" id="chart-global-hiring"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">AI Agent 重大并购（2025）</div>
+        <div class="card-subtitle">来源：新浪财经</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>时间</th><th>事件</th><th>意义</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>2025</td>
+                <td>通用 AI 智能体 <b>ManusAI</b> 被 Meta 以数十亿美元收购</td>
+                <td>AI Agent 成 2026 新战场</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">AI 安全峰会与监管（影响中国出口/部署）</div>
+        <div class="card-subtitle">来源：信通院《人工智能发展报告2024》</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>时间</th><th>事件</th></tr></thead>
+            <tbody>
+              <tr><td>2023-11</td><td>首届全球 AI 安全峰会（英国布莱切利园）</td></tr>
+              <tr><td>2024-05</td><td>首尔 AI 峰会</td></tr>
+              <tr><td>2024-11</td><td>AI 大模型产业创新发展大会（北京）</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/js/charts.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (async function() {
+      const global = await AJ.load('../data/global.json');
+
+      // 中美薪资差距
+      const cnus = global.china_us_salary_gap.data;
+      renderBarChart('chart-cn-us',
+        cnus.map(d => d.metric),
+        cnus.map(d => d.ratio),
+        { unit: ' 倍', rotate: 12, yLabelFormatter: v => v + 'x' }
+      );
+
+      // 全球融资
+      const fund = global.global_top_funding_2025.data;
+      renderBarChart('chart-global-funding',
+        fund.map(d => d.company),
+        fund.map(d => d.annual_investment_usd_yi),
+        { unit: ' 亿美元', rotate: 0 }
+      );
+
+      // 岗位变化
+      const gh = global.global_hiring_index_2025.data;
+      renderBarChart('chart-global-hiring',
+        gh.map(d => d.metric),
+        gh.map(d => d.value),
+        { unit: (d => d.unit || '')(gh[0]),
+          rotate: 25, yLabelFormatter: v => v + '%' }
+      );
+    })();
+  </script>
+</body>
+</html>

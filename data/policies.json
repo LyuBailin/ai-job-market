@@ -1,0 +1,147 @@
+{
+  "meta": {
+    "version": "2026.07.25",
+    "last_updated": "2026-07-25"
+  },
+  "national": [
+    {
+      "date": "2023-07-13",
+      "title": "《生成式人工智能服务管理暂行办法》",
+      "issuer": "国家网信办、发改委、教育部、科技部、工信部、公安部、广电总局",
+      "scope": "向境内公众提供生成式 AI 服务",
+      "key_points": [
+        "算法备案制（而非审核许可制）",
+        "分类分级监管",
+        "鼓励自主创新和算力协同",
+        "提供者承担内容生产者责任"
+      ],
+      "url": "http://www.ahdhf.com/law/shf/6373.html"
+    },
+    {
+      "date": "2023-08-15",
+      "title": "《生成式人工智能服务管理暂行办法》正式施行",
+      "issuer": "国家网信办",
+      "url": "https://www.sohu.com/a/791979918_121703718"
+    },
+    {
+      "date": "2024-01-17",
+      "title": "《国家人工智能产业综合标准化体系建设指南》（征求意见稿）",
+      "issuer": "工信部",
+      "key_points": [
+        "到2026年新制定国标和行标 50项以上",
+        "共性关键技术及应用开发类计划项目形成标准成果比例≥60%"
+      ],
+      "url": "https://www.sohu.com/a/759159939_121856233"
+    }
+  ],
+  "filing_cumulative": {
+    "title": "生成式 AI 服务备案累计数（国家网信办）",
+    "unit": "款",
+    "source": "国家互联网信息办公室",
+    "url": "https://new.qq.com/rain/a/20260109A06JU300",
+    "data": [
+      { "date": "2024-04", "value": null, "note": "首批备案" },
+      { "date": "2024-08", "value": null },
+      { "date": "2024-11", "value": null },
+      { "date": "2025-01", "value": null },
+      { "date": "2025-03", "value": null },
+      { "date": "2025-06", "value": null },
+      { "date": "2025-08", "value": null },
+      { "date": "2025-10", "value": null },
+      { "date": "2025-12", "value": 748, "note": "2025年新增446款" }
+    ]
+  },
+  "local": [
+    {
+      "date": "2025-03",
+      "city": "苏州",
+      "title": "《支持人工智能领域人才发展的若干措施》",
+      "issuer": "苏州市",
+      "items": 9,
+      "scope": "人才引进、培养、评价、激励、服务",
+      "url": "https://www.sohu.com/a/863234513_114960"
+    },
+    {
+      "date": "2024",
+      "city": "北京",
+      "title": "AI 产业政策系列",
+      "key_points": [
+        "人工智能发展指数全国第一",
+        "中关村科学城 / 大兴区 / 海淀区 等多区配套政策"
+      ]
+    },
+    {
+      "date": "2024",
+      "city": "深圳",
+      "title": "AI 产业政策",
+      "key_points": [
+        "AI 岗位数量占全国10%",
+        "南山区高薪招聘专场"
+      ]
+    },
+    {
+      "date": "2024",
+      "city": "上海",
+      "title": "临港智算中心 / 最高3000万研发补贴",
+      "source": "锐仕方达《2025年生成式人工智能薪酬报告》"
+    },
+    {
+      "date": "2024",
+      "city": "杭州",
+      "title": "顶尖团队1亿元资助",
+      "source": "锐仕方达《2025年生成式人工智能薪酬报告》"
+    }
+  ],
+  "key_reports_index": {
+    "title": "主要数据源报告索引",
+    "data": [
+      {
+        "name": "信通院《人工智能发展报告》",
+        "frequency": "年度",
+        "issuer": "中国信通院",
+        "scope": "技术、产业、政策综合",
+        "url": "https://www.sgpjbg.com/bgdown/184349.html"
+      },
+      {
+        "name": "BOSS直聘《人才趋势报告》",
+        "frequency": "年度（ECHO 大会）",
+        "issuer": "BOSS直聘",
+        "scope": "招聘需求、薪资、跨行业",
+        "url": "https://new.qq.com/rain/a/20260123A063C500"
+      },
+      {
+        "name": "脉脉《XXXX大模型人才报告》",
+        "frequency": "年度",
+        "issuer": "脉脉高聘人才智库",
+        "scope": "大模型细分岗位、供需、薪资",
+        "url": "https://post.smzdm.com/p/a3xo4p0k/"
+      },
+      {
+        "name": "智联招聘 + 北大国发院",
+        "frequency": "年度",
+        "issuer": "智联招聘+北大国发院",
+        "scope": "AI大模型对劳动力市场影响 / 城市发展指数",
+        "url": "https://www.sznews.com/news/content/2024-09/19/content_31222125.htm"
+      },
+      {
+        "name": "薪智《行业薪酬报告》",
+        "frequency": "季度",
+        "issuer": "薪智",
+        "scope": "应届生起薪、城市差异、涨薪率",
+        "url": "https://www.sohu.com/a/881803091_122300151"
+      },
+      {
+        "name": "锐仕方达《生成式AI薪酬报告》",
+        "frequency": "年度",
+        "issuer": "锐仕方达",
+        "scope": "生成式AI细分、城市、职级",
+        "url": "https://www.sohu.com/a/874161236_121877081"
+      },
+      {
+        "name": "信通院 + 北大 + 猎聘 等专项报告",
+        "frequency": "不定期",
+        "scope": "细分方向"
+      }
+    ]
+  }
+}

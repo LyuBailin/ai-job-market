@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>政策报告 - 中国 AI 就业市场数据看板</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="dot"></span>中国 AI 就业市场<span class="sub">数据看板</span></div>
+      <nav class="nav">
+        <a href="../index.html">总览</a>
+        <a href="jobs.html">岗位供需</a>
+        <a href="salary.html">薪资行情</a>
+        <a href="companies.html">公司动态</a>
+        <a href="cities.html">城市分布</a>
+        <a href="policies.html">政策报告</a>
+        <a href="timeline.html">大事记</a>
+        <a href="global.html">海外速览</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="page-title">政策与权威报告</div>
+      <div class="page-subtitle">国家级政策、地方人才政策、生成式 AI 备案、主要行业报告索引</div>
+    </div>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">国家级核心政策</div>
+        <div class="card-subtitle">与 AI 就业市场直接相关的国家级文件</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>发布日期</th><th>文件名称</th><th>发布机构</th><th>核心要点</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2023-07-13</td>
+                <td><b>《生成式人工智能服务管理暂行办法》</b></td>
+                <td>国家网信办等 7 部门</td>
+                <td>全球首部 AIGC 管理办法；算法备案制；分类分级监管</td>
+              </tr>
+              <tr>
+                <td>2023-08-15</td>
+                <td>《生成式人工智能服务管理暂行办法》正式施行</td>
+                <td>国家网信办</td>
+                <td>"呵护式"监管思路</td>
+              </tr>
+              <tr>
+                <td>2024-01-17</td>
+                <td>《国家人工智能产业综合标准化体系建设指南》（征求意见稿）</td>
+                <td>工信部</td>
+                <td>到 2026 年新制定国标+行标 50 项以上</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">地方 AI 人才政策（2024-2025）</div>
+        <div class="card-subtitle">各城市 AI 人才引进/补贴/产业支持政策</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>时间</th><th>城市</th><th>政策/亮点</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2025-03</td>
+                <td><b>苏州</b></td>
+                <td>《支持人工智能领域人才发展的若干措施》9 条</td>
+              </tr>
+              <tr>
+                <td>2024</td>
+                <td>北京</td>
+                <td>人工智能发展指数全国第一；中关村/海淀/大兴配套政策</td>
+              </tr>
+              <tr>
+                <td>2024</td>
+                <td>深圳</td>
+                <td>AI 岗位占全国 10%；南山区高薪专场</td>
+              </tr>
+              <tr>
+                <td>2024</td>
+                <td>上海</td>
+                <td>临港智算中心；最高 3000 万研发补贴</td>
+              </tr>
+              <tr>
+                <td>2024</td>
+                <td>杭州</td>
+                <td>顶尖团队 1 亿元资助；"六小龙"生态</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">生成式 AI 服务备案累计数（国家网信办）</div>
+        <div class="card-subtitle">数据来源：国家互联网信息办公室公告</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>时间节点</th><th>累计备案数</th><th>说明</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>截至 2025-12-31</td><td><b>748 款</b></td><td>2025 年新增 446 款</td></tr>
+              <tr><td>2025 年应用/功能登记</td><td>435 款</td><td>调用已备案模型能力的应用</td></tr>
+              <tr><td>2025 年新增应用/功能登记</td><td>330 款</td><td>由地方网信办登记</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;">
+          * 网信办按月公示备案信息，本表记录关键节点累计数。<br />
+          * 完整月度数据：附件 1-9（2024-04 ~ 2025-12）。
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">主要权威报告索引</div>
+        <div class="card-subtitle">本看板所有数据均来自以下权威来源（按发布机构）</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>报告名称</th><th>发布机构</th><th>频次</th><th>覆盖范围</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>《人工智能发展报告》</td>
+                <td>中国信通院</td>
+                <td>年度</td>
+                <td>技术、产业、政策综合</td>
+              </tr>
+              <tr>
+                <td>《人才趋势报告》</td>
+                <td>Boss直聘（ECHO 大会）</td>
+                <td>年度</td>
+                <td>招聘需求、薪资、跨行业</td>
+              </tr>
+              <tr>
+                <td>《大模型人才报告》/《春招职场安全感洞察》/《年度人才迁徙报告》</td>
+                <td>脉脉高聘人才智库</td>
+                <td>年度/季度</td>
+                <td>大模型细分、供需、薪资</td>
+              </tr>
+              <tr>
+                <td>《AI 大模型对我国劳动力市场潜在影响研究》</td>
+                <td>智联招聘 + 北大国发院</td>
+                <td>年度</td>
+                <td>城市发展指数 / 跨岗位影响</td>
+              </tr>
+              <tr>
+                <td>《行业薪酬报告》</td>
+                <td>薪智</td>
+                <td>季度</td>
+                <td>应届生起薪、城市差异、涨薪率</td>
+              </tr>
+              <tr>
+                <td>《生成式 AI 薪酬报告》</td>
+                <td>锐仕方达</td>
+                <td>年度</td>
+                <td>生成式 AI 细分、城市、职级</td>
+              </tr>
+              <tr>
+                <td>《中国企业招聘薪酬报告》</td>
+                <td>智联招聘</td>
+                <td>季度</td>
+                <td>分行业平均月薪</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/js/charts.js"></script>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

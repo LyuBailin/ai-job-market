@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "version": "2026.07.25",
+    "last_updated": "2026-07-25",
+    "update_policy": "事件驱动，重大变化 7 日内更新"
+  },
+  "kpi_cards": [
+    {
+      "id": "ai_job_yoy_2025",
+      "label": "AI 岗位新发同比增速",
+      "value": 74.1,
+      "unit": "%",
+      "as_of": "2025全年",
+      "delta_vs_prev_year": 37.6,
+      "source": "BOSS直聘《2026人才趋势报告》",
+      "url": "https://new.qq.com/rain/a/20260123A063C500"
+    },
+    {
+      "id": "ai_engineer_demand_growth_2025",
+      "label": "AI 工程师岗位需求增速",
+      "value": 317,
+      "unit": "%",
+      "as_of": "2025",
+      "source": "BOSS直聘《2026人才趋势报告》",
+      "url": "https://new.qq.com/rain/a/20260123A04FJF00"
+    },
+    {
+      "id": "llm_algo_avg_salary_2025spring",
+      "label": "大模型算法岗平均月薪",
+      "value": 68051,
+      "unit": "元/月",
+      "as_of": "2025年1-2月",
+      "source": "脉脉《2025春招职场安全感洞察》",
+      "url": "https://www.nbd.com.cn/articles/2025-03-25/3804085.html"
+    },
+    {
+      "id": "ai_talent_gap",
+      "label": "中国 AI 人才缺口",
+      "value": 500,
+      "unit": "万+",
+      "as_of": "2024-2025",
+      "source": "工信部教育考试中心 / 信通院",
+      "url": "https://baike.baidu.com/item/人工智能人才/23736526"
+    },
+    {
+      "id": "gen_ai_filing_cumulative",
+      "label": "生成式 AI 服务累计备案数",
+      "value": 748,
+      "unit": "款",
+      "as_of": "截至 2025-12-31",
+      "delta_2025": 446,
+      "source": "国家互联网信息办公室",
+      "url": "https://new.qq.com/rain/a/20260109A06JU300"
+    },
+    {
+      "id": "global_ai_market_2024",
+      "label": "全球 AI 产业规模",
+      "value": 6233,
+      "unit": "亿美元",
+      "as_of": "2024年",
+      "yoy_pct": 21.5,
+      "source": "IDC（信通院《人工智能发展报告2024》引用）",
+      "url": "https://www.sohu.com/a/842594701_121798711"
+    }
+  ],
+  "key_charts": {
+    "ai_job_yoy_timeseries": "data/jobs.json#ai_job_yoy",
+    "llm_salary_timeseries": "data/salary.json#llm_algo_avg_monthly",
+    "ai_filing_cumulative": "data/policies.json#filing_cumulative"
+  }
+}

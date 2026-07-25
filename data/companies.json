@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "version": "2026.07.25",
+    "last_updated": "2026-07-25"
+  },
+  "top_hiring_2024h1": {
+    "title": "2024上半年大模型新发岗位公司TOP（脉脉招聘指数）",
+    "source": "脉脉《2024大模型人才报告》",
+    "url": "https://post.smzdm.com/p/a3xo4p0k/",
+    "data": [
+      { "rank": 1, "company": "字节跳动", "hiring_index": 104.92 },
+      { "rank": 2, "company": "小红书", "hiring_index": 71.12, "note": "超阿里、美团、腾讯、华为" },
+      { "rank": 3, "company": "阿里巴巴", "hiring_index": null, "note": "未披露具体值" }
+    ]
+  },
+  "six_tigers_2024": {
+    "title": "AI 大模型\"六小虎\"2024年融资（智谱AI、月之暗面、百川智能、MiniMax、零一万物、阶跃星辰）",
+    "source": "第一财经/新浪财经/搜狐综合",
+    "url": "https://www.sohu.com/a/841880780_114986",
+    "data": [
+      { "name": "智谱AI", "rounds": 3, "total_funding_cny_yi": 40, "valuation_cny_yi": 200, "note": "9月+12月合并约30亿" },
+      { "name": "月之暗面", "rounds": 2, "total_funding_usd_yi": 13, "valuation_usd_yi": 33, "note": "2月+8月" },
+      { "name": "百川智能", "rounds": 1, "total_funding_cny_yi": 50, "valuation_cny_yi": 200, "note": "A轮50亿" },
+      { "name": "MiniMax", "rounds": 1, "total_funding_usd_yi": 6, "valuation_usd_yi": 25 },
+      { "name": "阶跃星辰", "rounds": 1, "total_funding_usd_yi": 1, "note": "B轮数亿美元" },
+      { "name": "零一万物", "rounds": 1, "total_funding_usd_yi": 1, "note": "数亿美元" }
+    ]
+  },
+  "six_tigers_2025": {
+    "title": "AI 大模型\"六小虎\"2025年融资与状态变化",
+    "source": "新浪财经/创投Plus/华尔街科技眼",
+    "url": "https://new.qq.com/rain/a/20260109A03Y6H00",
+    "data": [
+      { "name": "智谱AI", "rounds": 5, "total_funding_cny_yi": 30, "note": "D轮多次，估值200亿+", "ipo_status": "2026.1.9 港交所挂牌，市值一度>500亿港元" },
+      { "name": "月之暗面", "rounds": 1, "total_funding_usd_yi": 5, "note": "C轮5亿美元，杨植麟内部信称账面>100亿现金" },
+      { "name": "MiniMax", "rounds": 1, "total_funding_usd_yi": 3, "note": "C轮近3亿美元", "ipo_status": "2026.1.8 港交所挂牌，市值一度>700亿港元" },
+      { "name": "百川智能", "status": "战略调整", "note": "多名联创离职，聚焦AI医疗" },
+      { "name": "零一万物", "status": "战略调整", "note": "放弃超大规模模型，聚焦AI商业化" },
+      { "name": "阶跃星辰", "status": "B轮", "total_funding_usd_yi": 2, "note": "阿里参投" }
+    ]
+  },
+  "hangzhou_six_dragons_2025": {
+    "title": "杭州\"六小龙\"（2025年初崛起）",
+    "note": "AI 产业区域新势力",
+    "source": "央视财经/澎湃新闻",
+    "url": "https://www.toutiao.com/article/7475661372358001188/",
+    "data": [
+      { "name": "深度求索 DeepSeek", "field": "基础大模型", "note": "R1 发布引发全球关注" },
+      { "name": "宇树科技", "field": "人形/四足机器人" },
+      { "name": "游戏科学", "field": "游戏（《黑神话：悟空》团队）" },
+      { "name": "群核科技", "field": "空间智能平台" },
+      { "name": "云深处科技", "field": "四足机器人" },
+      { "name": "强脑科技", "field": "脑机接口" }
+    ]
+  },
+  "company_employee_profile": {
+    "title": "头部 AI 公司员工经验/学历结构（脉脉）",
+    "source": "脉脉《2025春招职场安全感洞察》",
+    "url": "https://tech.hexun.com/2025-03-25/218123203.html",
+    "data": [
+      {
+        "company": "深度求索 DeepSeek",
+        "experience_dist": "纺锤形：5-10年占40%",
+        "education_dist": "硕博合计 37.2%"
+      },
+      {
+        "company": "游戏科学",
+        "experience_dist": "5年以上占70%",
+        "education_dist": "本科44.3%，专科5.7%"
+      },
+      {
+        "company": "宇树科技",
+        "experience_dist": "1-5年占46.4% + 5年以上占47.8%（哑铃型）",
+        "education_dist": "硕士29% + 博士1.4%"
+      }
+    ]
+  },
+  "expansion_companies_2025q1": {
+    "title": "2025 Q1 扩招 TOP3（薪智）",
+    "source": "薪智《2025年Q2薪酬报告》",
+    "url": "https://www.sohu.com/a/881803091_122300151",
+    "data": [
+      { "company": "旷视科技", "hiring_growth_pct": 212.5 },
+      { "company": "海棠人工智能", "hiring_growth_pct": 90 },
+      { "company": "云从科技", "hiring_growth_pct": 48.7 }
+    ]
+  }
+}

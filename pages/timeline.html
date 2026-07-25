@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>大事记 - 中国 AI 就业市场数据看板</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="dot"></span>中国 AI 就业市场<span class="sub">数据看板</span></div>
+      <nav class="nav">
+        <a href="../index.html">总览</a>
+        <a href="jobs.html">岗位供需</a>
+        <a href="salary.html">薪资行情</a>
+        <a href="companies.html">公司动态</a>
+        <a href="cities.html">城市分布</a>
+        <a href="policies.html">政策报告</a>
+        <a href="timeline.html">大事记</a>
+        <a href="global.html">海外速览</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="page-title">AI 就业市场大事记</div>
+      <div class="page-subtitle">按时间倒序展示对中国 AI 就业市场有重大影响的事件</div>
+    </div>
+
+    <div class="notice">
+      <strong>事件分类：</strong>
+      <span style="color: var(--accent);">●</span> 模型发布 ·
+      <span style="color: var(--warning);">●</span> 政策 ·
+      <span style="color: var(--success);">●</span> 融资 ·
+      <span style="color: #9333ea;">●</span> IPO ·
+      <span style="color: #0891b2;">●</span> 报告 ·
+      <span style="color: #db2777;">●</span> 招聘动态
+    </div>
+
+    <section class="section">
+      <div class="card">
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/js/charts.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (async function() {
+      const events = await AJ.load('../data/events.json');
+      const el = document.getElementById('timeline');
+
+      // 倒序展示
+      const sorted = events.events.slice().sort((a, b) => b.date.localeCompare(a.date));
+      sorted.forEach(e => {
+        const item = document.createElement('div');
+        item.className = 'timeline-item cat-' + e.category;
+        const catLabel = ({
+          'policy': '政策',
+          'model_release': '模型发布',
+          'funding': '融资',
+          'ipo': 'IPO',
+          'report': '报告',
+          'hiring': '招聘动态',
+        })[e.category] || e.category;
+        item.innerHTML = `
+          <div class="timeline-date">${e.date} · ${catLabel}${e.issuer ? ' · ' + e.issuer : ''}</div>
+          <div class="timeline-title">${e.title}</div>
+          <div class="timeline-summary">${e.summary || ''}</div>
+          <div class="timeline-source">来源：${e.source || ''}${e.url ? ' · <a href="' + e.url + '" target="_blank">原文</a>' : ''}</div>`;
+        el.appendChild(item);
+      });
+    })();
+  </script>
+</body>
+</html>

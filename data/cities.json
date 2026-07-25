@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "version": "2026.07.25",
+    "last_updated": "2026-07-25"
+  },
+  "ai_development_index_top10_2024": {
+    "title": "中国 AI 发展指数 TOP10 城市（2024上半年，智联+北大国发院）",
+    "source": "智联招聘+北大国发院《AI大模型对我国劳动力市场潜在影响研究：2024》",
+    "url": "https://www.sznews.com/news/content/2024-09/19/content_31222125.htm",
+    "data": [
+      { "rank": 1, "city": "北京", "score_index": 100, "industry_jobs_pct": null, "note": "四个维度全部第一" },
+      { "rank": 2, "city": "深圳", "score_index": null, "industry_jobs_pct": 10, "note": "AI 岗位数占全国10%" },
+      { "rank": 3, "city": "上海", "score_index": null, "industry_jobs_pct": null },
+      { "rank": 4, "city": "广州", "score_index": null, "industry_jobs_pct": null },
+      { "rank": 5, "city": "杭州", "score_index": null, "industry_jobs_pct": null, "note": "六小龙所在地" },
+      { "rank": 6, "city": "南京", "score_index": null, "industry_jobs_pct": null },
+      { "rank": 7, "city": "成都", "score_index": null, "industry_jobs_pct": null },
+      { "rank": 8, "city": "武汉", "score_index": null, "industry_jobs_pct": null, "note": "AI 专业院校 21 所" },
+      { "rank": 9, "city": "苏州", "score_index": null, "industry_jobs_pct": null },
+      { "rank": 10, "city": "西安", "score_index": null, "industry_jobs_pct": null }
+    ]
+  },
+  "regional_ai_growth_2025": {
+    "title": "2025年 AI 岗位增长最快城市/区域（BOSS直聘）",
+    "source": "BOSS直聘 ECHO2026",
+    "url": "https://new.qq.com/rain/a/20260123A063C500",
+    "data": [
+      { "city": "惠州", "growth_pct": 180, "note": "智慧工厂/制造业复合人才" },
+      { "city": "深圳/东莞/惠州 珠三角", "scope": "智慧工厂集群" },
+      { "city": "武汉/重庆", "scope": "中西部，自动驾驶+供应链" }
+    ]
+  },
+  "talent_local_employment_2025": {
+    "title": "三四线城市 AI 就业新趋势",
+    "source": "智联招聘春招报告",
+    "url": "https://www.toutiao.com/article/7480915676211806759/",
+    "data": [
+      { "city": "蔚县（河北）", "type": "产业转移" },
+      { "city": "耒阳（湖南）", "type": "产业转移" },
+      { "city": "吉安（江西）", "type": "灵活岗位+直播带岗" }
+    ]
+  }
+}

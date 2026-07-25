@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>城市分布 - 中国 AI 就业市场数据看板</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="dot"></span>中国 AI 就业市场<span class="sub">数据看板</span></div>
+      <nav class="nav">
+        <a href="../index.html">总览</a>
+        <a href="jobs.html">岗位供需</a>
+        <a href="salary.html">薪资行情</a>
+        <a href="companies.html">公司动态</a>
+        <a href="cities.html">城市分布</a>
+        <a href="policies.html">政策报告</a>
+        <a href="timeline.html">大事记</a>
+        <a href="global.html">海外速览</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="page-title">城市分布</div>
+      <div class="page-subtitle">AI 发展指数、岗位聚集、薪资差异、区域特色</div>
+    </div>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">中国 AI 发展指数 TOP10 城市（2024上半年）</div>
+        <div class="card-subtitle">来源：智联招聘+北大国发院《AI大模型对我国劳动力市场潜在影响研究：2024》</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>排名</th><th>城市</th><th>特点</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="rank">1</td><td><b>北京</b></td><td>四个维度全部第一</td></tr>
+              <tr><td class="rank">2</td><td><b>深圳</b></td><td>AI 岗位占全国 10%，AI 专利 1.1 万+</td></tr>
+              <tr><td class="rank">3</td><td>上海</td><td>金融科技+临港智算中心</td></tr>
+              <tr><td class="rank">4</td><td>广州</td><td>互联网+制造业转型</td></tr>
+              <tr><td class="rank">5</td><td>杭州</td><td>"六小龙"所在地，2025投资增速最快</td></tr>
+              <tr><td class="rank">6</td><td>南京</td><td>高校资源+软件产业</td></tr>
+              <tr><td class="rank">7</td><td>成都</td><td>中西部 AI 应用</td></tr>
+              <tr><td class="rank">8</td><td>武汉</td><td>AI 专业院校 21 所，光电子+汽车</td></tr>
+              <tr><td class="rank">9</td><td>苏州</td><td>2025人才政策 9 条</td></tr>
+              <tr><td class="rank">10</td><td>西安</td><td>科研+军民融合</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">主要城市 AI 平均月薪（以宁波=100为基准）</div>
+        <div class="card-subtitle">来源：薪智《2025年Q2薪酬报告》</div>
+        <div class="chart" id="chart-city-salary"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">区域 AI 增长新趋势（2025）</div>
+        <div class="card-subtitle">来源：Boss直聘 ECHO2026 / 智联招聘</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>城市 / 区域</th><th>类型</th><th>代表趋势</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>深圳 / 东莞 / 惠州</td><td>珠三角智慧工厂集群</td><td>懂制造+懂自动化的复合人才紧缺；惠州 AI 岗位增速 180%</td></tr>
+              <tr><td>武汉 / 重庆</td><td>中西部</td><td>自动驾驶+供应链优化；服务光电子/汽车产业</td></tr>
+              <tr><td>蔚县（河北）</td><td>产业转移承接</td><td>机械制造+电子信息 2000+ 岗位</td></tr>
+              <tr><td>耒阳（湖南）</td><td>产业转移承接</td><td>吸引返乡青年</td></tr>
+              <tr><td>吉安（江西）</td><td>灵活就业+直播带岗</td><td>宝妈/中高龄就业率 +25%</td></tr>
+              <tr><td>2025 投资增速最快</td><td>上海</td><td>投资事件数 +200%，金额 +195%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/js/charts.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (async function() {
+      const [cities, salary] = await Promise.all([
+        AJ.load('../data/cities.json'),
+        AJ.load('../data/salary.json'),
+      ]);
+
+      // 城市薪酬指数
+      const cs = salary.fresh_grad_city_diff_2025.data;
+      renderBarChart('chart-city-salary',
+        cs.map(d => d.city),
+        cs.map(d => d.index_vs_ningbo),
+        { unit: '（基准 100）', yLabelFormatter: v => v.toFixed(1) }
+      );
+    })();
+  </script>
+</body>
+</html>

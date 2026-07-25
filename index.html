@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>中国 AI 就业市场数据看板</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="dot"></span>中国 AI 就业市场<span class="sub">数据看板</span></div>
+      <nav class="nav">
+        <a href="index.html">总览</a>
+        <a href="pages/jobs.html">岗位供需</a>
+        <a href="pages/salary.html">薪资行情</a>
+        <a href="pages/companies.html">公司动态</a>
+        <a href="pages/cities.html">城市分布</a>
+        <a href="pages/policies.html">政策报告</a>
+        <a href="pages/timeline.html">大事记</a>
+        <a href="pages/global.html">海外速览</a>
+      </nav>
+      <div class="meta" id="last-updated"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="page-title">中国 AI 就业市场 · 总览</div>
+      <div class="page-subtitle">数据来源：Boss直聘 / 脉脉 / 智联招聘 / 信通院 / 国家网信办 等权威机构。所有数据点带原始来源链接。</div>
+    </div>
+
+    <div class="notice">
+      <strong>关于数据：</strong>本看板以 <strong>中国 AI 就业市场</strong> 为主，海外仅记录对国内市场有重大影响的事件。
+      所有数据点均来自权威机构的公开报告或公司公告，<strong>不带主观判断</strong>。每张图表/表格的标题下都附了来源。
+    </div>
+
+    <!-- 关键指标卡片 -->
+    <section class="section">
+      <div class="section-title">关键指标 <span class="badge">KPI</span></div>
+      <div class="kpi-grid" id="kpi-grid"></div>
+    </section>
+
+    <!-- 趋势图 -->
+    <section class="section">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">AI 岗位新发职位数同比增速</div>
+          <div class="card-subtitle">来源：Boss直聘《2026人才趋势报告》</div>
+          <div class="chart" id="chart-job-yoy"></div>
+        </div>
+        <div class="card">
+          <div class="card-title">大模型算法岗平均月薪</div>
+          <div class="card-subtitle">来源：脉脉高聘人才智库（2023-2025）</div>
+          <div class="chart" id="chart-llm-salary"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 热门岗位增速 + 紧缺岗位 -->
+    <section class="section">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">2024上半年招聘增速 TOP5 AI 岗位</div>
+          <div class="card-subtitle">来源：智联招聘 + 北大国发院</div>
+          <div class="chart" id="chart-top-jobs"></div>
+        </div>
+        <div class="card">
+          <div class="card-title">大模型细分岗位人才供需比</div>
+          <div class="card-subtitle">&lt;1 表示供不应求（紧缺）。来源：脉脉</div>
+          <div class="chart" id="chart-shortage"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 高薪岗位 + 应届生起薪 -->
+    <section class="section">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">2025春招 高薪 AI 岗位 TOP</div>
+          <div class="card-subtitle">来源：脉脉《2025春招职场安全感洞察》</div>
+          <div class="chart" id="chart-high-salary"></div>
+        </div>
+        <div class="card">
+          <div class="card-title">2024届 AI 行业应届生起薪（按学历）</div>
+          <div class="card-subtitle">来源：薪智《2025年Q2薪酬报告》</div>
+          <div class="chart" id="chart-fresh-grad"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 大事件流（精简版） -->
+    <section class="section">
+      <div class="card">
+        <div class="card-title">近期重大事件 <a href="pages/timeline.html" style="font-size: 12px; font-weight: 400;">→ 查看完整大事记</a></div>
+        <div class="card-subtitle">最近一年的标志性事件（按时间倒序）</div>
+        <div class="timeline" id="recent-events"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      本网站所有数据来自公开报告，仅作信息展示。<br />
+      数据更新策略：事件驱动。详见 <code>_template/data-schema.md</code>。
+    </footer>
+  </main>
+
+  <script src="assets/js/charts.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (async function() {
+      try {
+        const [overview, jobs, salary, events] = await Promise.all([
+          AJ.load('data/overview.json'),
+          AJ.load('data/jobs.json'),
+          AJ.load('data/salary.json'),
+          AJ.load('data/events.json'),
+        ]);
+
+        // 最后更新时间
+        document.getElementById('last-updated').textContent =
+          '数据更新：' + overview.meta.last_updated;
+
+        // 渲染 KPI 卡片
+        const kpiGrid = document.getElementById('kpi-grid');
+        overview.kpi_cards.forEach(k => {
+          const deltaHtml = k.delta_vs_prev_year != null
+            ? `<span class="kpi-delta up">同比 ${k.delta_vs_prev_year > 0 ? '+' : ''}${k.delta_vs_prev_year}</span>`
+            : (k.delta_2025 != null ? `<span class="kpi-delta up">+${k.delta_2025}</span>` : '');
+          const card = document.createElement('div');
+          card.className = 'kpi-card';
+          card.innerHTML = `
+            <div class="kpi-label">${k.label}</div>
+            <div class="kpi-value">${typeof k.value === 'number' ? k.value.toLocaleString('zh-CN') : k.value}<span class="unit">${k.unit}</span></div>
+            <div class="kpi-meta">
+              <span>${k.as_of || ''}</span>
+              ${deltaHtml}
+              <span class="source-tag">${k.source}</span>
+            </div>`;
+          kpiGrid.appendChild(card);
+        });
+
+        // 1. AI 岗位同比增速
+        renderBarChart('chart-job-yoy',
+          jobs.ai_job_yoy.data.map(d => d.date),
+          jobs.ai_job_yoy.data.map(d => d.value),
+          {
+            unit: '%',
+            showLabel: true,
+            yLabelFormatter: (v) => v + '%',
+            tooltipFormatter: (p) => `${p[0].name}年<br/><b>${p[0].value}%</b> 同比`,
+          }
+        );
+
+        // 2. 大模型算法岗薪资趋势
+        renderLineChart('chart-llm-salary',
+          [{
+            name: '大模型算法岗',
+            data: salary.llm_algo_avg_monthly.data.map(d => d.value),
+            label: (p) => '¥' + p.value.toLocaleString('zh-CN'),
+          }],
+          {
+            xData: salary.llm_algo_avg_monthly.data.map(d => d.date),
+            yLabelFormatter: (v) => v >= 1000 ? (v / 1000) + 'k' : v,
+          }
+        );
+
+        // 3. 招聘增速 TOP5
+        const topJobs = jobs.top_growing_jobs_2024h1.data;
+        renderHBarChart('chart-top-jobs',
+          topJobs.map(j => ({ name: j.job, value: j.growth_pct })),
+          { unit: '%' }
+        );
+
+        // 4. 人才供需比（紧缺岗位）
+        const shortage = jobs.talent_shortage_subfields.data;
+        renderHBarChart('chart-shortage',
+          shortage.map(s => ({ name: s.subfield, value: s.value })),
+          { unit: ' (供需比)' }
+        );
+
+        // 5. 高薪岗位 TOP
+        const highSal = salary.top_jobs_salary_2025spring.data;
+        renderBarChart('chart-high-salary',
+          highSal.map(s => s.job),
+          highSal.map(s => s.avg_monthly_cny),
+          { unit: ' 元/月', rotate: 15 }
+        );
+
+        // 6. 应届生起薪
+        const fg = salary.fresh_grad_2024_xinzhi.data;
+        renderBarChart('chart-fresh-grad',
+          fg.map(d => d.degree),
+          fg.map(d => d.avg_monthly_cny),
+          { unit: ' 元/月' }
+        );
+
+        // 7. 近期事件（倒序 8 条）
+        const recent = events.events.slice().reverse().slice(0, 8);
+        const recentEl = document.getElementById('recent-events');
+        recent.forEach(e => {
+          const item = document.createElement('div');
+          item.className = 'timeline-item cat-' + e.category;
+          item.innerHTML = `
+            <div class="timeline-date">${e.date}</div>
+            <div class="timeline-title">${e.title}</div>
+            <div class="timeline-summary">${e.summary || ''}</div>
+            <div class="timeline-source">来源：${e.source || ''}${e.url ? ' · <a href="' + e.url + '" target="_blank">原文</a>' : ''}</div>`;
+          recentEl.appendChild(item);
+        });
+
+      } catch (err) {
+        console.error(err);
+        document.querySelector('.container').insertAdjacentHTML('afterbegin',
+          '<div class="notice"><strong>加载出错：</strong>' + err.message + '</div>');
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>公司动态 - 中国 AI 就业市场数据看板</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="dot"></span>中国 AI 就业市场<span class="sub">数据看板</span></div>
+      <nav class="nav">
+        <a href="../index.html">总览</a>
+        <a href="jobs.html">岗位供需</a>
+        <a href="salary.html">薪资行情</a>
+        <a href="companies.html">公司动态</a>
+        <a href="cities.html">城市分布</a>
+        <a href="policies.html">政策报告</a>
+        <a href="timeline.html">大事记</a>
+        <a href="global.html">海外速览</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="page-title">公司动态</div>
+      <div class="page-subtitle">大模型"六小虎"、杭州"六小龙"、头部大厂招聘、融资、IPO 进展</div>
+    </div>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">2024上半年 大模型新发岗位公司 TOP3（脉脉招聘指数）</div>
+        <div class="card-subtitle">来源：脉脉《2024大模型人才报告》</div>
+        <div class="chart" id="chart-top-hiring"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">AI 大模型"六小虎" 2024 融资</div>
+        <div class="card-subtitle">来源：第一财经/新浪财经/搜狐综合</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>公司</th>
+                <th class="num">融资轮次</th>
+                <th class="num">融资额</th>
+                <th class="num">估值</th>
+                <th>说明</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>智谱AI</td><td class="num">3 轮</td><td class="num">40 亿+ 元</td><td class="num">200 亿 元</td><td>9月+12月合并约30亿</td></tr>
+              <tr><td>月之暗面</td><td class="num">2 轮</td><td class="num">13 亿+ 美元</td><td class="num">33 亿 美元</td><td>2月+8月</td></tr>
+              <tr><td>百川智能</td><td class="num">1 轮</td><td class="num">50 亿 元</td><td class="num">200 亿 元</td><td>A 轮</td></tr>
+              <tr><td>MiniMax</td><td class="num">1 轮</td><td class="num">6 亿 美元</td><td class="num">25 亿 美元</td><td>阿里领投</td></tr>
+              <tr><td>阶跃星辰</td><td class="num">1 轮</td><td class="num">数亿 美元</td><td class="num">—</td><td>B 轮</td></tr>
+              <tr><td>零一万物</td><td class="num">1 轮</td><td class="num">数亿 美元</td><td class="num">—</td><td>国际战投+东南亚</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">AI 大模型"六小虎" 2025 状态变化</div>
+        <div class="card-subtitle">来源：新浪财经/创投Plus/华尔街科技眼</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>公司</th>
+                <th class="num">融资轮次</th>
+                <th>2025 状态</th>
+                <th>IPO 进展</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>智谱AI</td><td class="num">5 轮</td><td>累计 30 亿+ 元</td><td><b style="color: var(--success)">2026.1.9 港交所挂牌</b>，市值一度&gt;500亿港元</td></tr>
+              <tr><td>月之暗面</td><td class="num">1 轮</td><td>C 轮 5 亿美元，杨植麟内部信称账面&gt;100亿现金</td><td>—</td></tr>
+              <tr><td>MiniMax</td><td class="num">1 轮</td><td>C 轮近 3 亿美元</td><td><b style="color: var(--success)">2026.1.8 港交所挂牌</b>，市值一度&gt;700亿港元</td></tr>
+              <tr><td>百川智能</td><td class="num">—</td><td>多名联创离职，聚焦 AI 医疗</td><td>—</td></tr>
+              <tr><td>零一万物</td><td class="num">—</td><td>放弃超大规模模型，聚焦 AI 商业化</td><td>—</td></tr>
+              <tr><td>阶跃星辰</td><td class="num">B 轮</td><td>数亿美元，阿里参投</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">杭州"六小龙"（2025年初崛起）</div>
+        <div class="card-subtitle">来源：央视财经/澎湃新闻</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>公司</th><th>方向</th><th>代表事件</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>深度求索 DeepSeek</b></td><td>基础大模型</td><td>R1 发布引发全球关注；7天用户破亿</td></tr>
+              <tr><td>宇树科技</td><td>人形/四足机器人</td><td>2026春招：电机控制算法工程师开&gt;100万年薪</td></tr>
+              <tr><td>游戏科学</td><td>游戏（《黑神话：悟空》团队）</td><td>5年以上经验员工占70%</td></tr>
+              <tr><td>群核科技</td><td>空间智能平台</td><td>百万级薪酬+星核计划</td></tr>
+              <tr><td>云深处科技</td><td>四足机器人</td><td>春招重点：三四十名 AI 算法</td></tr>
+              <tr><td>强脑科技</td><td>脑机接口</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">头部 AI 公司员工结构（脉脉）</div>
+        <div class="card-subtitle">来源：脉脉《2025春招职场安全感洞察》</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>公司</th><th>经验分布</th><th>学历分布</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>深度求索 DeepSeek</td>
+                <td>纺锤形：5-10年占 40%</td>
+                <td>硕博合计 37.2%</td>
+              </tr>
+              <tr>
+                <td>游戏科学</td>
+                <td>5年以上占 70%</td>
+                <td>本科 44.3%，专科 5.7%</td>
+              </tr>
+              <tr>
+                <td>宇树科技</td>
+                <td>1-5年占 46.4% + 5年以上占 47.8%（哑铃型）</td>
+                <td>硕士 29% + 博士 1.4%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="card-title">2025 Q1 扩招 TOP3 公司（薪智）</div>
+        <div class="card-subtitle">来源：薪智《2025年Q2薪酬报告》</div>
+        <div class="chart short" id="chart-expansion"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/js/charts.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (async function() {
+      const companies = await AJ.load('../data/companies.json');
+
+      // 1. 招聘指数 TOP
+      const top = companies.top_hiring_2024h1.data.filter(d => d.hiring_index != null);
+      renderBarChart('chart-top-hiring',
+        top.map(d => d.company),
+        top.map(d => d.hiring_index),
+        { unit: ' 招聘指数' }
+      );
+
+      // 2. 2025 Q1 扩招
+      const exp = companies.expansion_companies_2025q1.data;
+      renderBarChart('chart-expansion',
+        exp.map(d => d.company),
+        exp.map(d => d.hiring_growth_pct),
+        { unit: '%', yLabelFormatter: v => v + '%' }
+      );
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "version": "2026.07.25",
+    "last_updated": "2026-07-25"
+  },
+  "events": [
+    {
+      "date": "2023-07-13",
+      "category": "policy",
+      "title": "《生成式人工智能服务管理暂行办法》公布",
+      "issuer": "国家网信办等7部门",
+      "summary": "全球首部AIGC管理办法，明确算法备案、安全评估等制度",
+      "url": "http://www.ahdhf.com/law/shf/6373.html",
+      "source": "国家网信办"
+    },
+    {
+      "date": "2023-08-15",
+      "category": "policy",
+      "title": "《生成式人工智能服务管理暂行办法》正式施行",
+      "issuer": "国家网信办等7部门",
+      "summary": "采用算法备案制而非审核许可制，体现\"呵护式\"监管思路",
+      "url": "https://www.sohu.com/a/791979918_121703718",
+      "source": "人民日报"
+    },
+    {
+      "date": "2024-01-17",
+      "category": "policy",
+      "title": "工信部就《国家人工智能产业综合标准化体系建设指南》征求意见",
+      "summary": "提出到2026年新制定国家标准和行业标准50项以上",
+      "url": "https://www.sohu.com/a/759159939_121856233",
+      "source": "工信部"
+    },
+    {
+      "date": "2024-09-05",
+      "category": "report",
+      "title": "脉脉《2024大模型人才报告》发布",
+      "summary": "大模型算法岗平均月薪超6.75万，云计算供需比0.33（3岗争1人）",
+      "url": "https://post.smzdm.com/p/a3xo4p0k/",
+      "source": "脉脉高聘人才智库"
+    },
+    {
+      "date": "2024-09-19",
+      "category": "report",
+      "title": "智联招聘+北大国发院《AI大模型对我国劳动力市场潜在影响研究：2024》",
+      "summary": "2024上半年NLP岗位增速111%；AI发展指数TOP10城市：北京/深圳/上海/广州/杭州/南京/成都/武汉/苏州/西安",
+      "url": "https://www.sznews.com/news/content/2024-09/19/content_31222125.htm",
+      "source": "智联招聘+北大国发院"
+    },
+    {
+      "date": "2024-11-29",
+      "category": "report",
+      "title": "信通院《人工智能发展报告（2024年）》发布",
+      "summary": "全球AI产业规模2024年6233亿美元，同比+21.5%；2024H1 AI投融资316亿美元，同比+84%",
+      "url": "https://www.sgpjbg.com/bgdown/184349.html",
+      "source": "中国信通院"
+    },
+    {
+      "date": "2024-12-17",
+      "category": "funding",
+      "title": "智谱AI完成30亿元新一轮融资",
+      "summary": "投前估值200亿，多家战投及国资跟投",
+      "url": "https://www.toutiao.com/article/7449296057801998848/",
+      "source": "证券时报"
+    },
+    {
+      "date": "2025-01-27",
+      "category": "model_release",
+      "title": "DeepSeek-R1 发布",
+      "summary": "DeepSeek 开源模型 R1 以低成本达到接近 GPT-o1 性能；7天内用户突破1亿；亚马逊/微软/英伟达相继接入",
+      "url": "https://www.toutiao.com/article/7475661372358001188/",
+      "source": "多家媒体"
+    },
+    {
+      "date": "2025-02-25",
+      "category": "hiring",
+      "title": "DeepSeek 时刻引爆春招",
+      "summary": "春招首周人工智能工程师求职增速69.6%居首；\"杭州六小龙\"全球高薪招贤",
+      "url": "https://www.toutiao.com/article/7475532787018138166/",
+      "source": "央视财经/中国青年报"
+    },
+    {
+      "date": "2025-03-25",
+      "category": "report",
+      "title": "脉脉《2025春招职场安全感洞察》发布",
+      "summary": "大模型算法岗月薪6.8万；AI行业人才流入/流出比从2024的0.80跌至2025的0.71（净流出加剧）",
+      "url": "https://www.nbd.com.cn/articles/2025-03-25/3804085.html",
+      "source": "脉脉高聘人才智库"
+    },
+    {
+      "date": "2025-03",
+      "category": "policy",
+      "title": "苏州市发布《支持人工智能领域人才发展的若干措施》",
+      "summary": "围绕人才引进、培养、评价、激励、服务集成9条举措",
+      "url": "https://www.sohu.com/a/863234513_114960",
+      "source": "苏州市"
+    },
+    {
+      "date": "2025-04",
+      "category": "ipo",
+      "title": "智谱AI向北交所提交上市辅导备案",
+      "summary": "\"AI大模型六小龙\"中首家冲刺IPO",
+      "url": "https://t.cj.sina.com.cn/articles/view/5953466483/162dab07301901etua",
+      "source": "投资家网"
+    },
+    {
+      "date": "2025-05",
+      "category": "report",
+      "title": "薪智《2025年Q2人工智能行业薪酬报告》",
+      "summary": "近12个月涨薪率0.8%（增速放缓）；2024届博士应届生起薪20550元/月",
+      "url": "https://www.sohu.com/a/881803091_122300151",
+      "source": "薪智"
+    },
+    {
+      "date": "2025-12-31",
+      "category": "policy",
+      "title": "2025年生成式AI服务备案数更新",
+      "summary": "全年新增446款备案，累计748款；新增330款应用/功能登记，累计435款",
+      "url": "https://new.qq.com/rain/a/20260109A06JU300",
+      "source": "国家网信办"
+    },
+    {
+      "date": "2026-01-08",
+      "category": "ipo",
+      "title": "MiniMax 港交所挂牌",
+      "summary": "市值一度>700亿港元",
+      "url": "https://new.qq.com/rain/a/20260109A03Y6H00",
+      "source": "新浪财经"
+    },
+    {
+      "date": "2026-01-09",
+      "category": "ipo",
+      "title": "智谱AI 港交所挂牌",
+      "summary": "市值一度>500亿港元",
+      "url": "https://new.qq.com/rain/a/20260109A03Y6H00",
+      "source": "新浪财经"
+    },
+    {
+      "date": "2026-01-22",
+      "category": "report",
+      "title": "BOSS直聘 ECHO2026 发布《2026人才趋势报告》",
+      "summary": "2025年AI相关岗位月均新发职位数同比+74.1%；AI工程师岗位需求+317%，中位数薪资涨15.8%",
+      "url": "https://new.qq.com/rain/a/20260123A063C500",
+      "source": "BOSS直聘"
+    },
+    {
+      "date": "2026-02",
+      "category": "hiring",
+      "title": "2026春招 AI 岗位同比+14倍（脉脉）",
+      "summary": "春晚带动AI/机器人企业大举招聘；宇树/银河通用/字节豆包开出>100万年薪岗位",
+      "url": "https://new.qq.com/rain/a/20260225A05ZC600",
+      "source": "脉脉"
+    }
+  ]
+}
