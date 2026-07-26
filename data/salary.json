@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026.07.25",
-    "last_updated": "2026-07-25",
+    "version": "2026.07.26",
+    "last_updated": "2026-07-26",
     "scope": "中国 AI 岗位薪资，单位：人民币元/月（除非另注）"
   },
   "llm_algo_avg_monthly": {
@@ -145,6 +145,54 @@
       { "region": "中国 AI 从业者", "weekly_hours": 50, "note": "约2/3低于60小时" },
       { "region": "大模型从业者 周工时>50", "pct": 65.79 },
       { "region": "大模型从业者 周工时>60", "pct": 32.9, "note": "日均>12小时" }
+    ]
+  },
+  "high_salary_jobs_2026spring": {
+    "title": "2026 春招高薪 AI 岗位 TOP（脉脉）",
+    "unit": "元/月",
+    "source": "脉脉《2026春招职场洞察报告》",
+    "url": "https://www.nbd.com.cn/articles/2026-05-14/4391595.html",
+    "data": [
+      { "rank": 1, "job": "AI 科学家/负责人", "avg_monthly_cny": 132796, "note": "断层领先，唯一破10万" },
+      { "rank": 2, "job": "算法研究员", "avg_monthly_cny": 74441 },
+      { "rank": 3, "job": "AI infra", "avg_monthly_cny": 73702, "note": "高于大模型算法" },
+      { "rank": 4, "job": "大模型算法", "avg_monthly_cny": 71534 },
+      { "rank": 5, "job": "AIGC 算法工程师", "avg_monthly_cny": 70000, "note": "约 7 万" }
+    ]
+  },
+  "ai_job_avg_salary_2026q1": {
+    "title": "2026 Q1 AI 岗位平均月薪（脉脉）",
+    "unit": "元/月",
+    "source": "脉脉《2026年1-2月洞察》",
+    "data": [
+      { "date": "2026-1~2", "scope": "AI 整体", "value": 60738, "note": "比新经济高 26%" },
+      { "date": "2026-1~4", "scope": "AI 整体", "value": 62850, "note": "vs 2025 同期 61849" },
+      { "date": "2026-1~4", "scope": "新经济整体", "value": 49608, "yoy_pct": 12.13 }
+    ]
+  },
+  "campus_recruit_2026_ai": {
+    "title": "2026 届校招 AI 岗位薪酬（51job / BOSS直聘）",
+    "unit": "万元/年",
+    "source": "前程无忧《2026届校招市场AI人才需求报告》",
+    "url": "https://new.qq.com/rain/a/20250825A0581L00",
+    "data": [
+      { "job": "大模型算法工程师", "median_monthly_cny": 24760, "scope": "校招中位数", "rank": 1 },
+      { "job": "深度学习工程师", "median_monthly_cny": 24466, "scope": "校招中位数" },
+      { "job": "自然语言处理工程师", "median_monthly_cny": 24378, "scope": "校招中位数" },
+      { "job": "多模态算法工程师", "median_monthly_cny": 23000, "scope": "校招中位数 >" },
+      { "job": "AI 测试工程师", "median_monthly_cny": 13621, "scope": "校招中位数" },
+      { "job": "AI 数据训练师", "median_monthly_cny": 8513, "scope": "校招中位数" }
+    ]
+  },
+  "campus_recruit_2026_byte_dance": {
+    "title": "字节跳动 2026 校招 AI 岗薪资结构",
+    "unit": "万元",
+    "source": "BOSS直聘 / 各企业公开 JD",
+    "data": [
+      { "level": "AI 后端开发-普通", "monthly_k": 24, "annual_total_w": "36-39" },
+      { "level": "AI 后端开发-优先", "monthly_k": 27, "signing_bonus_w": 3, "stock_w": 6, "annual_total_w": "40-50" },
+      { "level": "AI 后端开发-卓越", "monthly_k": 30, "signing_bonus_w": 5, "stock_w": 6, "annual_total_w": "50+" },
+      { "level": "AI 算法工程师", "annual_total_w": "35-45（顶尖 50+）" }
     ]
   }
 }

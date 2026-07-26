@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026.07.25",
-    "last_updated": "2026-07-25"
+    "version": "2026.07.26",
+    "last_updated": "2026-07-26"
   },
   "ai_development_index_top10_2024": {
     "title": "中国 AI 发展指数 TOP10 城市（2024上半年，智联+北大国发院）",
@@ -38,6 +38,29 @@
       { "city": "蔚县（河北）", "type": "产业转移" },
       { "city": "耒阳（湖南）", "type": "产业转移" },
       { "city": "吉安（江西）", "type": "灵活岗位+直播带岗" }
+    ]
+  },
+  "ai_penetration_by_city_2026": {
+    "title": "2026 春招新发 AI 岗位城市渗透率（脉脉）",
+    "unit": "%",
+    "source": "脉脉《2026春招职场洞察报告》",
+    "url": "https://www.nbd.com.cn/articles/2026-05-14/4391595.html",
+    "data": [
+      { "city": "北京", "ai_penetration_pct": 30.17, "rank": 1, "note": "每10个新岗位有3个AI岗" },
+      { "city": "杭州", "ai_penetration_pct": 28.54, "rank": 2, "note": "六小龙所在地" },
+      { "city": "上海", "ai_penetration_pct": 24.31, "rank": 3 },
+      { "city": "深圳", "ai_penetration_pct": 19.22, "rank": 4 }
+    ]
+  },
+  "top_hiring_cities_2026": {
+    "title": "2026 春招热招城市 TOP（脉脉）",
+    "source": "脉脉《2026春招职场洞察报告》",
+    "url": "https://www.nbd.com.cn/articles/2026-05-14/4391595.html",
+    "data": [
+      { "rank": 1, "city": "北京" },
+      { "rank": 2, "city": "上海" },
+      { "rank": 3, "city": "深圳" },
+      { "rank": 4, "city": "杭州" }
     ]
   }
 }

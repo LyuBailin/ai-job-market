@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026.07.25",
-    "last_updated": "2026-07-25",
+    "version": "2026.07.26",
+    "last_updated": "2026-07-26",
     "scope": "仅记录对中国 AI 就业市场有重大影响/直接关联的海外事件"
   },
   "global_market": {
@@ -59,6 +59,17 @@
     "url": "https://new.qq.com/rain/a/20260109A03Y6H00",
     "data": [
       { "date": "2025", "event": "通用 AI 智能体 ManusAI 被 Meta 以数十亿美元收购", "note": "AI Agent 成2026新战场" }
+    ]
+  },
+  "global_funding_2026h1": {
+    "title": "2026 H1 中国 AI 公司重大融资（影响国内人才市场）",
+    "source": "CSDN/华峰资本/晚点LatePost/南都",
+    "url": "https://blog.csdn.net/SuaniCommunity/article/details/160914349",
+    "data": [
+      { "date": "2026-05-06", "company": "DeepSeek", "event": "启动首轮外部融资", "amount_usd_yi": null, "valuation_usd_yi": 450, "note": "国家大基金洽谈领投" },
+      { "date": "2026-05-07", "company": "月之暗面", "event": "新一轮融资", "amount_usd_yi": 20, "valuation_usd_yi": 200, "lead_investor": "美团龙珠" },
+      { "date": "2026-05-08", "company": "阶跃星辰", "event": "新一轮融资（接近完成）", "amount_usd_yi": 25, "valuation_usd_yi": 100, "note": "产业链资本入场" },
+      { "date": "2026-04", "company": "月之暗面", "metric": "ARR", "value": "2 亿美元", "note": "4 月环比 3 月翻倍" }
     ]
   }
 }

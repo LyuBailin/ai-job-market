@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026.07.25",
-    "last_updated": "2026-07-25",
+    "version": "2026.07.26",
+    "last_updated": "2026-07-26",
     "update_policy": "事件驱动，重大变化 7 日内更新"
   },
   "kpi_cards": [
@@ -14,6 +14,26 @@
       "delta_vs_prev_year": 37.6,
       "source": "BOSS直聘《2026人才趋势报告》",
       "url": "https://new.qq.com/rain/a/20260123A063C500"
+    },
+    {
+      "id": "ai_job_yoy_2026q1",
+      "label": "2026 Q1 AI 岗位同比增速（脉脉）",
+      "value": 1200,
+      "unit": "%",
+      "as_of": "2026年1-2月",
+      "note": "同比+12倍",
+      "source": "脉脉高聘人才智库",
+      "url": "https://www.nbd.com.cn/articles/2026-05-14/4391595.html"
+    },
+    {
+      "id": "ai_scientist_salary_2026",
+      "label": "AI 科学家/负责人平均月薪（2026春招）",
+      "value": 132796,
+      "unit": "元/月",
+      "as_of": "2026年1-4月",
+      "note": "断层领先，唯一破10万",
+      "source": "脉脉《2026春招职场洞察报告》",
+      "url": "https://www.nbd.com.cn/articles/2026-05-14/4391595.html"
     },
     {
       "id": "ai_engineer_demand_growth_2025",
@@ -45,12 +65,13 @@
     {
       "id": "gen_ai_filing_cumulative",
       "label": "生成式 AI 服务累计备案数",
-      "value": 748,
+      "value": 988,
       "unit": "款",
-      "as_of": "截至 2025-12-31",
-      "delta_2025": 446,
+      "as_of": "截至 2026-06-30",
+      "delta_2026_h1": 240,
+      "note": "2026 H1 新增 240 款",
       "source": "国家互联网信息办公室",
-      "url": "https://new.qq.com/rain/a/20260109A06JU300"
+      "url": "https://new.qq.com/rain/a/20260711A02HZ800"
     },
     {
       "id": "global_ai_market_2024",

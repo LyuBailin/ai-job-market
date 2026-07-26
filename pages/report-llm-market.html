@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>中国 LLM 人才市场深度报告 (2026 H1) - 中国 AI 就业市场数据看板</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <style>
+    .report-hero {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: #fff;
+      padding: 56px 32px;
+      border-radius: 12px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .report-hero::after {
+      content: "";
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 240px; height: 240px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .report-hero h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .report-hero .sub {
+      font-size: 15px;
+      opacity: 0.92;
+      max-width: 720px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+    .report-hero .meta {
+      display: flex;
+      gap: 24px;
+      margin-top: 20px;
+      font-size: 13px;
+      opacity: 0.86;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+    .report-hero .meta span::before {
+      content: "•";
+      margin-right: 8px;
+      color: #fbbf24;
+    }
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 28px;
+    }
+    .toc h3 { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; font-weight: 600; }
+    .toc ol { padding-left: 20px; font-size: 13px; color: var(--text-secondary); line-height: 2; }
+    .toc a { color: var(--text-primary); }
+    .section-h {
+      font-size: 22px;
+      font-weight: 600;
+      margin: 36px 0 8px;
+      letter-spacing: -0.01em;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .callout {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border-left: 3px solid #f59e0b;
+      padding: 14px 18px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      color: #78350f;
+      margin: 16px 0;
+      line-height: 1.7;
+    }
+    .callout strong { color: #451a03; }
+    .prose p {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--text-primary);
+      margin: 12px 0;
+    }
+    .prose ul, .prose ol {
+      font-size: 14px;
+      line-height: 1.85;
+      margin: 12px 0 12px 24px;
+      color: var(--text-primary);
+    }
+    .prose li { margin: 4px 0; }
+    .figure {
+      margin: 24px 0;
+      padding: 0;
+    }
+    .figure img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .figure .caption {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 8px;
+    }
+    .sourcelist {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.9;
+    }
+    .sourcelist li { margin: 6px 0; }
+    .sourcelist code {
+      font-size: 11px;
+      background: var(--bg-elevated);
+      padding: 1px 6px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="dot"></span>中国 AI 就业市场<span class="sub">数据看板</span></div>
+      <nav class="nav">
+        <a href="../index.html">总览</a>
+        <a href="jobs.html">岗位供需</a>
+        <a href="salary.html">薪资行情</a>
+        <a href="companies.html">公司动态</a>
+        <a href="cities.html">城市分布</a>
+        <a href="policies.html">政策报告</a>
+        <a href="timeline.html">大事记</a>
+        <a href="global.html">海外速览</a>
+        <a href="report-llm-market.html" class="active">LLM 报告</a>
+        <a href="career-guide.html">职业规划</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 报告封面 -->
+    <div class="report-hero">
+      <h1>中国 LLM 人才市场深度报告</h1>
+      <div class="sub">2026 年上半年关键数据：岗位量同比+8.7倍、AI 科学家月薪 13 万、六小虎 IPO 竞速、备案数破 988 款</div>
+      <div class="meta">
+        <span>报告期：2026 H1（1-6 月）</span>
+        <span>数据来源：脉脉 / BOSS直聘 / 智联招聘 / 国家网信办 / 信通院 / 公司公告</span>
+        <span>报告生成：2026-07-26</span>
+      </div>
+    </div>
+
+    <!-- 目录 -->
+    <div class="toc">
+      <h3>目录</h3>
+      <ol>
+        <li><a href="#sec1">执行摘要：2026 H1 的 5 个关键变化</a></li>
+        <li><a href="#sec2">招聘市场：岗位量同比+8.7 倍</a></li>
+        <li><a href="#sec3">薪资水位：AI 科学家断层 13 万/月</a></li>
+        <li><a href="#sec4">资本与 IPO：六小虎的生死竞速</a></li>
+        <li><a href="#sec5">政策环境：备案数破 988 款</a></li>
+        <li><a href="#sec6">城市分布：北京 30%、杭州 28%</a></li>
+        <li><a href="#sec7">头部公司格局：大厂 vs 六小虎 vs 杭州六小龙</a></li>
+        <li><a href="#sec8">人才结构变化：去初级化、AI 工具普及</a></li>
+        <li><a href="#sec9">展望：Agent 元年 + 具身智能起势</a></li>
+        <li><a href="#sec10">数据来源附录</a></li>
+      </ol>
+    </div>
+
+    <!-- 摘要 -->
+    <h2 id="sec1" class="section-h">1. 执行摘要</h2>
+    <p class="section-sub">2026 H1 关键数据一览</p>
+    <div class="prose">
+      <p>2026 年上半年，中国 LLM（Large Language Model，大语言模型）人才市场呈现"井喷式"增长。一系列结构性变化已经发生：</p>
+      <ul>
+        <li><strong>岗位端：</strong>2026 年 1-4 月 AI 领域新发岗位量同比 <strong>+8.7 倍</strong>（脉脉口径），AI 占新经济整体岗位比重从 2025 年同期的 2.78% 跃升至 <strong>22.03%</strong>。</li>
+        <li><strong>薪资端：</strong>AI 科学家/负责人平均月薪 <strong>132,796 元</strong>（断层领先，唯一破 10 万）；AI 整体平均月薪 62,850 元，比新经济行业高 26%。</li>
+        <li><strong>紧缺端：</strong>高性能计算工程师供需比从 2025 年的 0.99 骤降至 <strong>0.26</strong>（4 岗抢 1 人）；AI 整体供需比 0.97（接近供需平衡但竞争温和）。</li>
+        <li><strong>资本端：</strong>2026 年 5 月单周，DeepSeek（估值 450 亿美元）、月之暗面（20 亿美元）、阶跃星辰（25 亿美元）相继披露大额融资，合计 45 亿美元。</li>
+        <li><strong>政策端：</strong>生成式 AI 服务累计备案数从 2025 年末的 748 款增长到 <strong>988 款</strong>（2026-06-30），半年净增 240 款。</li>
+      </ul>
+      <div class="callout">
+        <strong>核心结论：</strong>2026 H1 是中国 LLM 人才市场从"快速扩张"迈入"结构性成熟"的关键半年。岗位总量井喷的同时，行业出现了"<strong>K 型分化</strong>"——核心技术岗薪资继续创新高，初级岗位（1 年以内）需求同比下降 20%。AI 不再是"加分项"，已成为企业"硬指标"。
+      </div>
+    </div>
+
+    <!-- 招聘市场 -->
+    <h2 id="sec2" class="section-h">2. 招聘市场：岗位量同比+8.7 倍</h2>
+    <p class="section-sub">来源：脉脉《2026春招职场洞察报告》《2026年1-2月洞察》</p>
+    <div class="prose">
+      <p>2026 年开年招聘市场全面回暖，新经济行业整体岗位量同比 <strong>+22.6%</strong>，但 AI 赛道增速远超整体水平。</p>
+      <p>据脉脉高聘人才智库 2026 年 5 月发布的《2026春招职场洞察报告》：</p>
+      <ul>
+        <li>2026 年 1-4 月，<strong>AI 领域岗位量同比 +8.7 倍</strong>（1-2 月口径为 +12 倍，因数据来源时点不同）</li>
+        <li>AI 占新经济整体岗位比重：2025 年同期 2.78% → 2026 年 1-4 月平均 <strong>22.03%</strong>（1-2 月最高 26.23%）</li>
+        <li><strong>具身智能赛道</strong>：岗位量同比 <strong>+15 倍</strong>，招聘指数从 2025 年的 36 跃升至 579</li>
+        <li>AI 整体人才供需比 1.23（求职者略多于岗位），但细分方向如高性能计算工程师（0.26）、SLAM 算法（0.21）、规控算法（0.23）极度紧缺</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">图表 1：AI 岗位同比增速（BOSS直聘 + 脉脉口径）</div>
+      <div class="card-subtitle">BOSS直聘为月度新发职位数同比；脉脉为综合新经济岗位同比</div>
+      <div class="chart tall" id="chart-job-growth"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">图表 2：2026 春招 TOP10 紧缺 AI 岗位供需比</div>
+      <div class="card-subtitle">值越小越紧缺。来源：脉脉《2026春招职场洞察报告》</div>
+      <div class="chart" id="chart-shortage-2026"></div>
+    </div>
+
+    <!-- 薪资 -->
+    <h2 id="sec3" class="section-h">3. 薪资水位：AI 科学家断层 13 万/月</h2>
+    <p class="section-sub">来源：脉脉《2026春招职场洞察报告》、前程无忧《2026届校招市场AI人才需求报告》</p>
+    <div class="prose">
+      <p>2026 年 AI 行业薪资持续创新高，但内部分化加剧。</p>
+      <p><strong>2026 春招高薪岗位 TOP5：</strong></p>
+      <ul>
+        <li>AI 科学家/负责人：<strong>132,796 元/月</strong>（断层领先，唯一破 10 万）</li>
+        <li>算法研究员：74,441 元/月</li>
+        <li>AI infra：73,702 元/月（<strong>高于大模型算法</strong>）</li>
+        <li>大模型算法：71,534 元/月</li>
+        <li>AIGC 算法工程师：约 70,000 元/月</li>
+      </ul>
+      <p><strong>2026 校招（51job）：</strong>大模型算法工程师以 24,760 元/月的中位薪酬领跑；AI 测试工程师（13,621 元）和 AI 数据训练师（8,513 元）与核心技术岗差距显著。</p>
+      <div class="callout">
+        <strong>结构性变化：</strong>AI infra 岗位薪资（73,702 元）已超过大模型算法（71,534 元），反映出"算力调度和训练效率"人才的价值正在被市场重估。基础设施岗的紧缺度甚至超过算法岗。
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">图表 3：2026 春招高薪 AI 岗位 TOP5</div>
+      <div class="card-subtitle">单位：元/月。来源：脉脉</div>
+      <div class="chart" id="chart-high-salary-2026"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">图表 4：2026 届校招 AI 岗位薪酬中位数（按岗位）</div>
+      <div class="card-subtitle">来源：前程无忧 51job</div>
+      <div class="chart" id="chart-campus-2026"></div>
+    </div>
+
+    <!-- 资本与 IPO -->
+    <h2 id="sec4" class="section-h">4. 资本与 IPO：六小虎的生死竞速</h2>
+    <p class="section-sub">来源：晚点LatePost、华峰资本、新民晚报、南都、上海证券报、金融时报</p>
+    <div class="prose">
+      <p>2026 H1 是中国 LLM 行业的"资本竞速"期。短短一周内（2026 年 5 月 6-8 日），三大头部公司相继披露重大融资：</p>
+      <ul>
+        <li><strong>DeepSeek</strong>（5 月 6 日）：启动首轮外部融资，国家集成电路产业投资基金（大基金）洽谈领投，估值约 <strong>450 亿美元</strong>。腾讯、阿里亦洽谈参与。梁文锋从"不接受外部融资"转向"开门迎客"，标志着 DeepSeek 从开源异端向国家战略核心的角色转变。</li>
+        <li><strong>月之暗面</strong>（5 月 7 日）：完成约 <strong>20 亿美元</strong>融资，投后估值超 200 亿美元。美团龙珠领投，水木资本、中国移动、CPE 源峰参投。4 月 ARR（年度经常性收入）超 2 亿美元。不到半年完成 4 轮融资，估值较 2025 年 11 月翻超 4 倍。</li>
+        <li><strong>阶跃星辰</strong>（5 月 8 日）：将完成近 <strong>25 亿美元</strong>融资，估值约 100 亿美元。产业链资本集中入场（华勤、龙旗、豪威、中兴），已拆除红筹结构加速赴港 IPO。"港版淡马锡"HKIC 入股。</li>
+      </ul>
+      <p><strong>IPO 进展：</strong>智谱（2026-01-09 港交所挂牌，市值一度 >500 亿港元）、MiniMax（2026-01-08 港交所挂牌，市值一度 >700 亿港元）已完成港股上市；阶跃星辰成为第三个冲刺港股的大模型公司。DeepSeek、月之暗面、零一万物、百川智能虽未明确 IPO 时间表，但已具备公开市场条件。</p>
+      <p><strong>战略分化：</strong>月之暗面走"技术 + 资本双向循环"路线（K2.5/K2.6 高频迭代驱动 ARR 增长，反哺人才和算力）；阶跃星辰走"产业捆绑"路线（与华勤/中兴/豪威深度绑定，押注终端 AI）；DeepSeek 走"国家战略核心"路线（大基金入场 + 算力国产化）。三条路径的合理性与长期回报，尚需时间检验。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">图表 5：2026 H1 中国大模型公司估值（亿美元）</div>
+      <div class="card-subtitle">来源：晚点LatePost、华峰资本、新民晚报、上海证券报</div>
+      <div class="chart" id="chart-valuation-2026"></div>
+    </div>
+
+    <div class="figure">
+      <img src="../assets/images/ecosystem.png" alt="中国 AI 产业生态图" />
+      <div class="caption">中国 AI 产业生态图（概念图）</div>
+    </div>
+
+    <!-- 政策 -->
+    <h2 id="sec5" class="section-h">5. 政策环境：备案数破 988 款</h2>
+    <p class="section-sub">来源：国家互联网信息办公室</p>
+    <div class="prose">
+      <p>生成式 AI 服务的合规化进程持续加速。2023 年 8 月《生成式人工智能服务管理暂行办法》施行以来，累计备案数已从 2024 年末的 302 款增长到 2026 年 6 月 30 日的 <strong>988 款</strong>，加上应用/功能登记的 598 款，合计 <strong>1,586 款</strong>。</p>
+      <p><strong>2026 H1 备案节奏：</strong></p>
+      <ul>
+        <li>1-2 月：新增 48 款备案 + 46 款登记（累计 796 款 + 481 款）</li>
+        <li>3-4 月：新增 72 款 + 49 款（累计 868 款 + 530 款）</li>
+        <li>5-6 月：新增 120 款 + 68 款（累计 988 款 + 598 款）</li>
+      </ul>
+      <p><strong>区域扩散特征：</strong>2026 年 1-2 月备案覆盖全国 16 个省级行政区，<strong>新疆、西藏、青海、云南</strong>等地首次通过备案（实现"零的突破"）。备案主体从大型企业扩展到中小企业（占 50%）、高校/科研机构（12.5%）、中央企业（31.25%）。</p>
+      <p><strong>地方补贴：</strong>北京通州区、亦庄开发区，广州天河区、海珠区、黄埔区，深圳龙华区，浙江嘉兴、杭州、宁波及福建等地均推出专项扶持政策，补贴金额 <strong>50-200 万元</strong>。政策有效期多至 2027 年底。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">图表 6：生成式 AI 服务备案累计数（2024-2026）</div>
+      <div class="card-subtitle">来源：国家互联网信息办公室</div>
+      <div class="chart tall" id="chart-filing-cumulative"></div>
+    </div>
+
+    <!-- 城市分布 -->
+    <h2 id="sec6" class="section-h">6. 城市分布：北京 30%、杭州 28%</h2>
+    <p class="section-sub">来源：脉脉《2026春招职场洞察报告》</p>
+    <div class="prose">
+      <p>AI 岗位的城市集中度进一步提高。2026 年 1-4 月，<strong>北京</strong>新发 AI 岗位渗透率达 <strong>30.17%</strong>（即每 10 个新发岗位中有 3 个是 AI 相关），位列全国第一。<strong>杭州</strong>以 28.54% 紧随其后，超过上海（24.31%）和深圳（19.22%）。</p>
+      <p>杭州的崛起与"杭州六小龙"（DeepSeek、宇树科技、游戏科学、群核科技、云深处科技、强脑科技）的产业集群效应密切相关。2026 年 1 月起，杭州连续承接了多场 AI 专场招聘会，岗位供给端出现明显放量。</p>
+      <p>热招城市 TOP4：北京、上海、深圳、杭州（顺序与渗透率不同，反映存量 + 增量需求）。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">图表 7：2026 春招新发 AI 岗位城市渗透率</div>
+      <div class="card-subtitle">单位：% （每 10 个新发岗位中 AI 岗位占比）。来源：脉脉</div>
+      <div class="chart" id="chart-city-penetration-2026"></div>
+    </div>
+
+    <div class="figure">
+      <img src="../assets/images/cities.png" alt="AI 城市分布概念图" />
+      <div class="caption">AI 城市分布（概念图）</div>
+    </div>
+
+    <!-- 头部公司 -->
+    <h2 id="sec7" class="section-h">7. 头部公司格局：大厂 vs 六小虎 vs 杭州六小龙</h2>
+    <p class="section-sub">来源：脉脉、晚点LatePost、36氪、新民晚报</p>
+    <div class="prose">
+      <p>2026 春招头部公司招聘排名：<strong>字节跳动</strong>断层第一，<strong>大疆</strong>跃居第二（首次超越小红书），<strong>小红书</strong>第三。腾讯、美团、蚂蚁集团、京东、阿里、拼多多等巨头持续位居前列。<strong>MiniMax、追觅</strong>也进入热招 TOP20。</p>
+      <p><strong>2026 Q1 招聘量同比涨幅 TOP 公司：</strong></p>
+      <ul>
+        <li>自变量机器人：<strong>+831.88%</strong>（具身智能）</li>
+        <li>大疆：+646.31%（智能硬件）</li>
+        <li>阶跃星辰：+557.84%（大模型）</li>
+        <li>道通智能航空：+408.51%（低空经济）</li>
+        <li>面壁智能：+264.29%（大模型）</li>
+        <li>智元创新：+209.02%（具身智能）</li>
+        <li>MiniMax：+218.02%（大模型）</li>
+      </ul>
+      <p><strong>AI 渗透率（公司层面）：</strong>面壁智能 67.97%、国信普惠 64.11%、国电通 61.41%、京东数科 53.00%、阿里云 52.09%、智谱 50.54%、阶跃星辰 48.14%、DeepSeek 47.42%。新发岗位 AI 渗透率 >50% 的企业已达 8 家。AI 人才争夺已从"互联网 + 科技"扩展到"电力 + 金融 + 电商 + 智驾 + 具身智能"的"跨界混战"。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">图表 8：2026 Q1 新发岗位量同比涨幅 TOP 公司</div>
+      <div class="card-subtitle">来源：脉脉《2026春招职场洞察报告》</div>
+      <div class="chart" id="chart-company-growth-2026"></div>
+    </div>
+
+    <!-- 人才结构 -->
+    <h2 id="sec8" class="section-h">8. 人才结构变化：去初级化、AI 工具普及</h2>
+    <p class="section-sub">来源：脉脉《2026春招职场洞察报告》《2026年1-2月洞察》</p>
+    <div class="prose">
+      <p>2026 H1 的人才市场出现了明显的"结构性位移"：</p>
+      <ul>
+        <li><strong>去初级化：</strong>3 年以上经验要求的岗位占比达 <strong>73.34%</strong>，1 年以内经验岗位同比 <strong>-20%</strong>，3-5 年经验岗位量同比 <strong>+19%</strong>（增幅最大）。</li>
+        <li><strong>AI 工具普及化：</strong><strong>95.11%</strong> 的新经济人才都在使用 AI 工具，<strong>38.51%</strong> 的程序员所在公司已把 AI 能力纳入绩效考核。<strong>54%</strong> 的程序员所在公司过去一年发生过岗位优化。</li>
+        <li><strong>大厂 AI 渗透：</strong>万人以上企业 70.3% 提供免费或自研 AI 工具，500 人以下企业仅 42.5%。</li>
+        <li><strong>Agent 工具崛起：</strong>编程 Agent 和自主执行型 Agent 的选择比例合计达 34.07%，16.14% 使用自主执行型 Agent 工具（"养虾"现象）。63.24% 的 AI 使用者不清楚自己每天的 Token 消耗量，2.05% 重度用户日消耗 >1000 万 Token。</li>
+        <li><strong>企业招聘偏好：</strong>看重"数学与算法基础"的占 60.3%，看重"实际项目/实习或竞赛经历"的占 52.5%，"精通当前热门技术"占 34.6%，"软硬件协同开发经验"占 30.7%，<strong>名校学历仅 28.8%</strong>（排第 5）。</li>
+      </ul>
+      <div class="callout">
+        <strong>给求职者的信号：</strong>企业更看重"实际能力"而非"学历光环"。数学基础 + 项目经验 + 开源贡献 + 顶会论文是新的"四件套"。对于刚入行的人来说，从"被动求职者"转变为"用 AI 工具放大自己生产力"的人，比单纯刷题更有效。
+      </div>
+    </div>
+
+    <!-- 展望 -->
+    <h2 id="sec9" class="section-h">9. 展望：Agent 元年 + 具身智能起势</h2>
+    <p class="section-sub">基于现有公开数据的事实性趋势判断</p>
+    <div class="prose">
+      <p>从 2026 H1 的数据来看，三个结构性趋势已经显现：</p>
+      <ul>
+        <li><strong>Agent 元年：</strong>脉脉创始人林凡明确提出"2026 年是 Agent 大年"。编程 Agent（Cursor / Claude Code）和自主执行型 Agent（Manus / OpenClaw）已在 B 端企业大规模铺开。产品、市场、运营等非技术岗的 Agent 使用率已接近 20%。</li>
+        <li><strong>具身智能规模化：</strong>岗位量同比 +15 倍，平均月薪从 5.87 万升至 6.16 万。宇树科技、自变量机器人、智元创新等企业进入快速扩招期。2026 年 7 月阶跃星辰发布 AI 智能体手机 STEPX Neo，标志着"AI Native 终端"的探索正式开始。</li>
+        <li><strong>AI infra 价值重估：</strong>AI infra 岗位薪资（73,702 元）已超过大模型算法（71,534 元），高性能计算工程师供需比 0.26（4 岗抢 1 人）。算力国产化 + 大模型工程化背景下，"底层支撑岗"的紧缺度将持续上升。</li>
+      </ul>
+      <p>本报告基于截至 2026 年 7 月的公开数据，<strong>不对未来薪资或岗位增长做主观预测</strong>，仅做事实性总结。</p>
+    </div>
+
+    <div class="figure">
+      <img src="../assets/images/salary.png" alt="薪资分布概念图" />
+      <div class="caption">AI 岗位薪资分层（概念图）</div>
+    </div>
+
+    <div class="figure">
+      <img src="../assets/images/report-cover.png" alt="报告封面" />
+      <div class="caption">中国 AI 就业市场数据看板 · 2026 H1</div>
+    </div>
+
+    <!-- 数据来源 -->
+    <h2 id="sec10" class="section-h">10. 数据来源附录</h2>
+    <p class="section-sub">本报告所有数据点均来自以下公开来源</p>
+    <ul class="sourcelist">
+      <li>脉脉高聘人才智库《2026春招职场洞察报告》（2026-05-13）— <code>nbd.com.cn/articles/2026-05-14/4391595.html</code></li>
+      <li>脉脉高聘人才智库《2026年1-2月中高端人才求职招聘洞察》（2026-03-09）</li>
+      <li>脉脉高聘人才智库《2025年度人才迁徙报告》</li>
+      <li>BOSS直聘《2026人才趋势报告》ECHO2026（2026-01-22）</li>
+      <li>智联招聘+北大国发院《AI大模型对我国劳动力市场潜在影响研究：2024》</li>
+      <li>智联招聘《2025年春招市场行业周报（第一期）》</li>
+      <li>智联招聘《中国企业招聘薪酬报告》</li>
+      <li>前程无忧 51job《2026届校招市场AI人才需求报告》（2025-08-25）</li>
+      <li>国家互联网信息办公室《2025年生成式AI服务已备案信息》+ 2026 年历次公示</li>
+      <li>晚点LatePost（2026-05 月之暗面融资报道）</li>
+      <li>华峰资本（2026-05 月之暗面融资公告）</li>
+      <li>新民晚报/南都（2026-05 阶跃星辰融资报道）</li>
+      <li>上海证券报/金融时报（2026-05 DeepSeek 融资报道）</li>
+      <li>信通院《人工智能发展报告（2024年）》</li>
+      <li>锐仕方达《2025年生成式人工智能薪酬报告》</li>
+      <li>薪智《2025年Q2人工智能行业薪酬报告》</li>
+    </ul>
+    <p style="font-size: 12px; color: var(--text-muted); margin-top: 24px;">
+      报告生成：<strong>2026-07-26</strong>。所有数据点可在 <code>data/*.json</code> 中查阅原始数据。
+    </p>
+  </main>
+
+  <footer class="footer">
+    本报告由 <a href="https://lyubailin.github.io/ai-job-market/">中国 AI 就业市场数据看板</a> 自动生成 · 仅作信息展示
+  </footer>
+
+  <script src="../assets/js/charts.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (async function() {
+      const [jobs, salary, policies, cities, companies] = await Promise.all([
+        AJ.load('../data/jobs.json'),
+        AJ.load('../data/salary.json'),
+        AJ.load('../data/policies.json'),
+        AJ.load('../data/cities.json'),
+        AJ.load('../data/companies.json'),
+      ]);
+
+      // 1. 招聘增速对比
+      renderBarChart('chart-job-growth',
+        ['2023', '2024', '2025 (BOSS)', '2026 Q1 (脉脉)'],
+        [8.5, 36.5, 74.1, 1200],
+        {
+          unit: '%',
+          yLabelFormatter: v => v >= 1000 ? (v/1000).toFixed(0) + 'k%' : v + '%',
+          tooltipFormatter: p => `${p[0].name}<br/><b>${p[0].value}%</b> 同比`,
+        }
+      );
+
+      // 2. 紧缺岗位
+      const shortage = jobs.ai_supply_demand_2026.data;
+      renderHBarChart('chart-shortage-2026',
+        shortage.map(s => ({ name: s.scope, value: s.value })),
+        { unit: ' (供需比)' }
+      );
+
+      // 3. 高薪 TOP5
+      const high = salary.high_salary_jobs_2026spring.data;
+      renderBarChart('chart-high-salary-2026',
+        high.map(s => s.job),
+        high.map(s => s.avg_monthly_cny),
+        { unit: ' 元/月', rotate: 12 }
+      );
+
+      // 4. 校招薪酬
+      const campus = salary.campus_recruit_2026_ai.data;
+      renderBarChart('chart-campus-2026',
+        campus.map(c => c.job),
+        campus.map(c => c.median_monthly_cny),
+        { unit: ' 元/月', rotate: 18 }
+      );
+
+      // 5. 大模型公司估值
+      const val = companies.six_tigers_2025.data.filter(d => d.valuation_usd_yi || d.valuation_cny_yi);
+      const valuationData = [
+        { name: 'DeepSeek', value: 450, source: '估值 450 亿美元（2026.05）' },
+        { name: '月之暗面', value: 200, source: '估值 200 亿美元（2026.05）' },
+        { name: '阶跃星辰', value: 100, source: '估值 100 亿美元（2026.05）' },
+        { name: '智谱AI', value: 30, source: '估值 30 亿美元（IPO前）' },
+      ];
+      renderHBarChart('chart-valuation-2026',
+        valuationData.map(d => ({ name: d.name, value: d.value })),
+        { unit: ' 亿美元' }
+      );
+
+      // 6. 备案累计
+      const filing = policies.filing_cumulative.data.filter(d => d.value != null);
+      renderLineChart('chart-filing-cumulative',
+        [{
+          name: '累计备案数',
+          data: filing.map(d => d.value),
+          label: p => '¥' + p.value.toLocaleString('zh-CN'),
+        }],
+        {
+          xData: filing.map(d => d.date),
+        }
+      );
+
+      // 7. 城市渗透率
+      const cityPenetration = cities.ai_penetration_by_city_2026.data;
+      renderBarChart('chart-city-penetration-2026',
+        cityPenetration.map(c => c.city),
+        cityPenetration.map(c => c.ai_penetration_pct),
+        { unit: '%', yLabelFormatter: v => v + '%' }
+      );
+
+      // 8. 公司招聘增长
+      const compGrowth = jobs.company_hiring_growth_2026q1.data;
+      renderBarChart('chart-company-growth-2026',
+        compGrowth.map(c => c.company),
+        compGrowth.map(c => c.value),
+        { unit: '%', rotate: 15, yLabelFormatter: v => v + '%' }
+      );
+    })();
+  </script>
+</body>
+</html>

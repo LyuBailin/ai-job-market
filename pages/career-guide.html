@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 行业职业规划指南 - 中国 AI 就业市场数据看板</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <style>
+    .career-hero {
+      position: relative;
+      padding: 80px 32px 64px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #3b82f6 100%);
+      color: #fff;
+      border-radius: 14px;
+      margin-bottom: 32px;
+      overflow: hidden;
+    }
+    .career-hero::before {
+      content: "";
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.35) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .career-hero::after {
+      content: "";
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .career-hero .eyebrow {
+      font-size: 13px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .career-hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .career-hero .sub {
+      font-size: 17px;
+      opacity: 0.92;
+      max-width: 640px;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+    .career-hero .stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 32px;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+    .career-hero .stat-num {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fbbf24;
+      letter-spacing: -0.02em;
+    }
+    .career-hero .stat-label {
+      font-size: 12px;
+      opacity: 0.78;
+      margin-top: 4px;
+    }
+
+    .path-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .path-card:hover {
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      transform: translateY(-2px);
+    }
+    .path-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+    }
+    .path-card.safe::before { background: #16a34a; }
+    .path-card.breakthrough::before { background: #f59e0b; }
+    .path-card.explore::before { background: #8b5cf6; }
+
+    .path-emoji {
+      font-size: 28px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .path-name {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .path-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .path-salary {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+      margin: 8px 0 16px;
+    }
+    .path-salary .period {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+    .path-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .path-milestones {
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .path-milestones .label {
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .path-milestones li {
+      margin: 4px 0;
+      padding-left: 18px;
+      position: relative;
+    }
+    .path-milestones li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .scene {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      color: #f1f5f9;
+      border-radius: 12px;
+      padding: 48px 40px;
+      margin: 32px 0;
+    }
+    .scene-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(245, 158, 11, 0.2);
+      color: #fbbf24;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+    .scene-title {
+      font-size: 14px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+    }
+    .scene-text {
+      font-size: 18px;
+      line-height: 1.85;
+      color: #f1f5f9;
+      font-weight: 300;
+      max-width: 720px;
+    }
+    .scene-text p {
+      margin-bottom: 16px;
+    }
+    .scene-text strong {
+      color: #fbbf24;
+      font-weight: 500;
+    }
+
+    .gap-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .gap-table th {
+      text-align: left;
+      padding: 10px 12px;
+      background: var(--bg-elevated);
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .gap-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-primary);
+    }
+    .gap-priority {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .priority-high { background: #fee2e2; color: #dc2626; }
+    .priority-med { background: #fef3c7; color: #b45309; }
+    .priority-low { background: #dcfce7; color: #15803d; }
+
+    @media (max-width: 900px) {
+      .career-hero h1 { font-size: 32px; }
+      .career-hero .sub { font-size: 15px; }
+      .career-hero .stats { gap: 20px; }
+      .career-hero .stat-num { font-size: 22px; }
+      .scene { padding: 32px 20px; }
+      .scene-text { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="dot"></span>中国 AI 就业市场<span class="sub">数据看板</span></div>
+      <nav class="nav">
+        <a href="../index.html">总览</a>
+        <a href="jobs.html">岗位供需</a>
+        <a href="salary.html">薪资行情</a>
+        <a href="companies.html">公司动态</a>
+        <a href="cities.html">城市分布</a>
+        <a href="policies.html">政策报告</a>
+        <a href="timeline.html">大事记</a>
+        <a href="global.html">海外速览</a>
+        <a href="report-llm-market.html">LLM 报告</a>
+        <a href="career-guide.html" class="active">职业规划</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 首屏 -->
+    <div class="career-hero">
+      <div class="eyebrow">公开版 · 面向想入行 AI 的求职者</div>
+      <h1>你 的 AI 行 业 之 路</h1>
+      <div class="sub">
+        基于 2026 H1 真实招聘数据，为你规划 3 条差异化路径。基于你的背景、风险偏好和目标，选择最适合的那一条。
+      </div>
+      <div class="stats">
+        <div>
+          <div class="stat-num">+8.7x</div>
+          <div class="stat-label">2026 H1 AI 岗位同比</div>
+        </div>
+        <div>
+          <div class="stat-num">¥13.2万</div>
+          <div class="stat-label">AI 科学家月薪</div>
+        </div>
+        <div>
+          <div class="stat-num">988款</div>
+          <div class="stat-label">生成式 AI 备案</div>
+        </div>
+        <div>
+          <div class="stat-num">3条</div>
+          <div class="stat-label">差异化路径</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 路径总览 -->
+    <h2 style="font-size: 22px; font-weight: 600; margin-bottom: 8px;">3 条路径</h2>
+    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px;">
+      基于 2026 H1 中国 LLM 人才市场数据，每条路径都有明确的目标岗位、3 年后收入预期、关键里程碑和风险提示。
+    </p>
+
+    <div class="grid-3">
+      <!-- 稳健路径 -->
+      <div class="path-card safe">
+        <span class="path-emoji">🛡️</span>
+        <div class="path-name">稳健路径</div>
+        <div class="path-title">AI 应用开发工程师</div>
+        <div class="path-salary">15-30K <span class="period">/月 → 3 年后</span></div>
+        <div class="path-desc">
+          适合：已有 1-3 年编程经验，能快速上手大模型 API、LangChain、Agent 框架。3 年后从"会写代码"升级为"能交付 AI 业务"的工程师，薪资从 1.5 万/月涨到 2-3 万/月。
+        </div>
+        <div class="path-milestones">
+          <div class="label">3 个关键里程碑</div>
+          <ul>
+            <li>Y1：掌握 RAG、Agent 工程化，做 1-2 个完整 demo</li>
+            <li>Y2：成为团队 AI 应用核心贡献者，6 万+ 年包</li>
+            <li>Y3：晋升高级工程师 / TL，年包 30-50 万</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 突破路径 -->
+      <div class="path-card breakthrough">
+        <span class="path-emoji">🚀</span>
+        <div class="path-name">突破路径</div>
+        <div class="path-title">大模型算法工程师</div>
+        <div class="path-salary">30-50万 <span class="period">/年起 → 3 年后 50-100万+</span></div>
+        <div class="path-desc">
+          适合：985/211 硕士及以上，有深度学习基础，能啃动 Transformer / 预训练 / RLHF。3 年后成为大厂或独角兽的核心算法工程师，进入"AI infra"或"大模型算法"高薪榜。
+        </div>
+        <div class="path-milestones">
+          <div class="label">3 个关键里程碑</div>
+          <ul>
+            <li>Y1：复现 1-2 篇 SOTA 论文，开源贡献</li>
+            <li>Y2：拿到顶会论文（NeurIPS/ICML/ACL）或 Kaggle 奖牌</li>
+            <li>Y3：跳槽或晋升，独角兽核心岗年包 50-100 万+</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 探索路径 -->
+      <div class="path-card explore">
+        <span class="path-emoji">🌟</span>
+        <div class="path-name">探索路径</div>
+        <div class="path-title">AI Agent / 具身智能工程师</div>
+        <div class="path-salary">20-40K <span class="period">/月 → 3 年后 30-60万+/年</span></div>
+        <div class="path-desc">
+          适合：愿意押注新兴方向的早期采纳者。Agent 元年（2026）和具身智能爆发期，正是人才缺口最大的窗口。3 年后成为细分领域稀缺人才，薪资 + 股权双丰收。
+        </div>
+        <div class="path-milestones">
+          <div class="label">3 个关键里程碑</div>
+          <ul>
+            <li>Y1：深耕 Agent / 具身智能 1 个垂直场景</li>
+            <li>Y2：成为团队技术骨干，对外输出（博客/GitHub）</li>
+            <li>Y3：跳槽具身智能/Agent 头部公司，年包 30-60 万+</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 场景：3 年后的某一天 -->
+    <h2 style="font-size: 22px; font-weight: 600; margin: 40px 0 8px;">3 年后的某一天</h2>
+    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 8px;">
+      沉浸式预览三条路径下，3 年后你可能过的生活。
+    </p>
+
+    <div class="scene">
+      <span class="scene-tag">场景 1 · 稳健路径</span>
+      <div class="scene-title">3 年后，AI 应用开发工程师的一天</div>
+      <div class="scene-text">
+        <p>早上 9 点，你打开电脑，<strong>Cursor</strong> 已经在草稿区列出了昨天代码 review 留下的 3 个待修复点。10 分钟搞定，省下了一杯咖啡的时间。</p>
+        <p>10 点，团队 standup。PM 提了一个新需求：用 RAG + 私有知识库做一个内部"问数助手"。你心里已经在拆解：<strong>query 改写、向量库选型、Agent 多步推理、效果评估</strong>。3 年前你还在纠结"该不该转 AI"，现在你已经是团队最懂"AI 应用落地"的那个人。</p>
+        <p>下午，你在 GitHub 维护一个 200 star 的开源项目。一家猎头找过来，给了一个 35K×16 薪的高级岗 offer——不是大厂，但做的事情你喜欢。你决定再看看。</p>
+        <p>晚上回家，你在看《数学之美》。3 年前你以为自己只是个"调包侠"，现在你开始读懂 Transformer 的 attention 机制了。<strong>不是变聪明了，是积累到了那个量变到质变的临界点。</strong></p>
+      </div>
+    </div>
+
+    <div class="scene">
+      <span class="scene-tag">场景 2 · 突破路径</span>
+      <div class="scene-title">3 年后，大模型算法工程师的一天</div>
+      <div class="scene-text">
+        <p>早上 9 点半，你端着咖啡走进工位。昨晚的 ablation 实验跑完了，<strong>loss 曲线在 70B token 之后终于开始收敛</strong>。你打开日志，发现是数据清洗阶段的 bug。</p>
+        <p>10 点，跟组里 2 个博士同步：今天要做 RLHF 第二阶段的 reward model 调优。你是这条 pipeline 的 owner——3 年前你还在调开源模型的 LoRA，现在你负责的核心模块是公司基座模型的关键拼图。</p>
+        <p>下午 2 点，paper deadline。你和导师讨论了第 4 节的实验设计——这是你第三篇一作，方向是 Agent 的<strong>多轮 tool-use 评估</strong>。投的目标是 NeurIPS。</p>
+        <p>晚上 9 点，你和团队一起去庆功：今年发的模型在某个 benchmark 上首次超过了 GPT-4o。<strong>HR 给你推了一个"技术专家"的晋升通道，年包大概在 80-120 万之间</strong>。你没立刻答应，先回家想了一晚。</p>
+      </div>
+    </div>
+
+    <div class="scene">
+      <span class="scene-tag">场景 3 · 探索路径</span>
+      <div class="scene-title">3 年后，AI Agent 工程师的一天</div>
+      <div class="scene-text">
+        <p>早上 8 点，你在家办公。你是一家具身智能创业公司的 <strong>#8 员工</strong>，负责 AgentOS 智能座舱的多模态决策模块。窗外是上海张江的早晨，团队分布在 5 个城市，靠 GitHub + 飞书协作。</p>
+        <p>10 点，跟硬件团队对齐：<strong>新一代传感器延迟降到 8ms</strong>，这意味着你的模型可以从 30Hz 提升到 60Hz。你开始重写 inference 流程。</p>
+        <p>下午，一个车企的客户来访。他们看了 demo 之后说"想预装 10 万台"。你心里算了一下：10 万台 × 50 元/台的 API 调用，毛利可观。<strong>你的期权终于开始值钱了。</strong></p>
+        <p>晚上 8 点，你在写一篇博客：<strong>"Agent 在垂直场景的 3 个反直觉经验"</strong>。3 年前你押注 Agent 的时候，市场还不成熟，今天你已经是某个细分方向的"早期玩家"。猎头找你开价 60 万年薪+期权，你没回应——你在等公司上市。</p>
+      </div>
+    </div>
+
+    <!-- 能力雷达图 -->
+    <h2 style="font-size: 22px; font-weight: 600; margin: 40px 0 8px;">能力雷达</h2>
+    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">
+      3 条路径对核心能力的要求差异。
+    </p>
+
+    <div class="card">
+      <div class="chart tall" id="chart-radar"></div>
+    </div>
+
+    <!-- 技能差距分析 -->
+    <h2 style="font-size: 22px; font-weight: 600; margin: 40px 0 8px;">从现状到目标：技能差距分析</h2>
+    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">
+      基于 2026 H1 数据，企业对"想入行 AI 的求职者"的核心要求（51job 调研）。
+    </p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table class="gap-table">
+          <thead>
+            <tr>
+              <th>企业看重的素质</th>
+              <th>占比</th>
+              <th>稳健路径</th>
+              <th>突破路径</th>
+              <th>探索路径</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>数学与算法基础</td>
+              <td>60.3%</td>
+              <td><span class="gap-priority priority-med">中</span></td>
+              <td><span class="gap-priority priority-high">高</span></td>
+              <td><span class="gap-priority priority-med">中</span></td>
+            </tr>
+            <tr>
+              <td>实际项目 / 实习 / 竞赛</td>
+              <td>52.5%</td>
+              <td><span class="gap-priority priority-high">高</span></td>
+              <td><span class="gap-priority priority-high">高</span></td>
+              <td><span class="gap-priority priority-high">高</span></td>
+            </tr>
+            <tr>
+              <td>精通当前热门技术</td>
+              <td>34.6%</td>
+              <td><span class="gap-priority priority-high">高</span></td>
+              <td><span class="gap-priority priority-med">中</span></td>
+              <td><span class="gap-priority priority-high">高</span></td>
+            </tr>
+            <tr>
+              <td>软硬件协同开发经验</td>
+              <td>30.7%</td>
+              <td><span class="gap-priority priority-low">低</span></td>
+              <td><span class="gap-priority priority-med">中</span></td>
+              <td><span class="gap-priority priority-high">高</span></td>
+            </tr>
+            <tr>
+              <td>名校学历</td>
+              <td>28.8%</td>
+              <td><span class="gap-priority priority-low">低</span></td>
+              <td><span class="gap-priority priority-high">高</span></td>
+              <td><span class="gap-priority priority-med">中</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 行动建议 -->
+    <h2 style="font-size: 22px; font-weight: 600; margin: 40px 0 8px;">行动建议（基于数据）</h2>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-title">如果你在读 / 应届生</div>
+        <div class="prose" style="font-size: 13.5px; line-height: 1.8;">
+          <p><strong>选突破路径</strong>的概率最高（顶尖公司校招起薪 40-55 万）。</p>
+          <ul>
+            <li>基础课：高数/线代/概率 → ML/DL → Transformer</li>
+            <li>实习：争取大厂或独角兽的算法实习</li>
+            <li>论文：哪怕是 workshop 或 arXiv 预印本</li>
+            <li>竞赛：Kaggle / 阿里天池 / 百度之星</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">如果你是 1-3 年经验的程序员</div>
+        <div class="prose" style="font-size: 13.5px; line-height: 1.8;">
+          <p><strong>选稳健路径</strong>最稳（成功率最高，3 年后 15-30K/月）。</p>
+          <ul>
+            <li>主线：把现有工程能力 + LLM API 应用结合</li>
+            <li>学习：LangChain / LlamaIndex / RAG 实战</li>
+            <li>作品：1-2 个可演示的 AI 应用</li>
+            <li>关注：业务理解，比算法更稀缺</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">如果你是 3-5 年经验 / 想转型</div>
+        <div class="prose" style="font-size: 13.5px; line-height: 1.8;">
+          <p><strong>选探索路径</strong>（Agent / 具身智能）的窗口期最好。</p>
+          <ul>
+            <li>押注：Agent 框架（LangGraph / AutoGen）或具身</li>
+            <li>选公司：选早期公司（员工 < 200）期权收益最大</li>
+            <li>补短板：强化学习 + 机器人基础</li>
+            <li>Networking：AI 人才的 33.74% 好友通过率是普通人的 1.5 倍</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 数据来源 -->
+    <div class="card" style="margin-top: 32px;">
+      <div class="card-title">数据来源</div>
+      <div class="prose" style="font-size: 12px; color: var(--text-secondary); line-height: 1.8;">
+        <p>本页所有数据点均来自公开报告：</p>
+        <ul>
+          <li>脉脉《2026春招职场洞察报告》《2026年1-2月洞察》— 薪资、供需比、城市分布</li>
+          <li>BOSS直聘《2026人才趋势报告》— 岗位增速、跨行业渗透</li>
+          <li>前程无忧 51job《2026届校招市场AI人才需求报告》— 企业招聘偏好</li>
+          <li>信通院《人工智能发展报告（2024年）》— 行业整体规模</li>
+        </ul>
+        <p style="margin-top: 12px;"><strong>本页面仅做事实呈现和路径规划参考，</strong>不构成职业建议。具体选择应结合你的个人背景、行业趋势和风险偏好综合判断。</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <a href="https://lyubailin.github.io/ai-job-market/">中国 AI 就业市场数据看板</a> · 公开版职业规划指南
+  </footer>
+
+  <script src="../assets/js/charts.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (async function() {
+      // 能力雷达图（用 ECharts radar）
+      const chart = echarts.init(document.getElementById('chart-radar'));
+      const option = {
+        color: CHART_PALETTE,
+        backgroundColor: '#fff',
+        textStyle: { color: CHART_TEXT, fontFamily: 'inherit' },
+        tooltip: {},
+        legend: {
+          data: ['稳健路径', '突破路径', '探索路径'],
+          bottom: 0,
+          textStyle: { color: CHART_TEXT, fontSize: 12 },
+        },
+        radar: {
+          indicator: [
+            { name: '编程能力', max: 100 },
+            { name: '数学基础', max: 100 },
+            { name: '业务理解', max: 100 },
+            { name: '系统设计', max: 100 },
+            { name: '研究能力', max: 100 },
+            { name: '产品视野', max: 100 }
+          ],
+          splitArea: { areaStyle: { color: ['rgba(44, 92, 255, 0.04)', 'rgba(44, 92, 255, 0.08)'] } },
+          axisLine: { lineStyle: { color: 'rgba(0, 0, 0, 0.08)' } },
+          splitLine: { lineStyle: { color: 'rgba(0, 0, 0, 0.08)' } },
+          name: { textStyle: { color: CHART_TEXT, fontSize: 12 } }
+        },
+        series: [{
+          type: 'radar',
+          data: [
+            {
+              value: [85, 50, 80, 75, 30, 70],
+              name: '稳健路径',
+              lineStyle: { color: CHART_PALETTE[1] },
+              areaStyle: { color: 'rgba(22, 163, 74, 0.15)' }
+            },
+            {
+              value: [75, 95, 50, 80, 95, 50],
+              name: '突破路径',
+              lineStyle: { color: CHART_PALETTE[3] },
+              areaStyle: { color: 'rgba(245, 158, 11, 0.15)' }
+            },
+            {
+              value: [75, 60, 70, 85, 65, 80],
+              name: '探索路径',
+              lineStyle: { color: CHART_PALETTE[7] },
+              areaStyle: { color: 'rgba(139, 92, 246, 0.15)' }
+            }
+          ]
+        }]
+      };
+      chart.setOption(option);
+      window.addEventListener('resize', () => chart.resize());
+    })();
+  </script>
+</body>
+</html>

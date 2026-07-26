@@ -1,8 +1,8 @@
 {
   "meta": {
-    "version": "2026.07.25",
-    "last_updated": "2026-07-25",
-    "scope": "中国 AI 就业市场（含大模型、AI应用开发、CV、NLP、机器人算法等岗位）"
+    "version": "2026.07.26",
+    "last_updated": "2026-07-26",
+    "scope": "中国 AI 就业市场（含大模型、AI应用开发、CV、NLP、机器人算法、具身智能、智能体等岗位）"
   },
   "ai_job_yoy": {
     "title": "AI 岗位新发职位数同比增速（BOSS直聘口径）",
@@ -12,7 +12,8 @@
     "data": [
       { "date": "2023", "value": 8.5 },
       { "date": "2024", "value": 36.5 },
-      { "date": "2025", "value": 74.1 }
+      { "date": "2025", "value": 74.1 },
+      { "date": "2026-Q1", "value": 1200, "scope": "AI 整体 (脉脉口径)", "note": "1-2月同比+12倍" }
     ]
   },
   "supply_demand_ratio": {
@@ -115,6 +116,97 @@
       { "scope": "高级管理 AI 岗位", "growth_pct": 139 },
       { "scope": "电子半导体 新增 AI 岗位", "growth_pct": 162 },
       { "scope": "消费零售/物流/制造业 AI 岗位", "growth_pct": 100, "note": "全部翻倍" }
+    ]
+  },
+  "ai_job_yoy_2026": {
+    "title": "2026 年 AI 岗位增速（脉脉口径）",
+    "unit": "%",
+    "source": "脉脉高聘人才智库《2026年1-2月中高端人才求职招聘洞察》+《脉脉2026春招职场洞察报告》",
+    "url": "https://www.nbd.com.cn/articles/2026-05-14/4391595.html",
+    "data": [
+      { "date": "2026-1~2", "scope": "AI 整体", "yoy_pct": 1200, "note": "同比+12倍" },
+      { "date": "2026-1~2", "scope": "AI 占新经济岗位比例", "value_pct": 26.23, "note": "2025 同期 2.29%" },
+      { "date": "2026-1~4", "scope": "AI 整体", "yoy_pct": 870, "note": "同比+8.7倍" },
+      { "date": "2026-1~4", "scope": "AI 占新经济岗位比例", "value_pct": 22.03, "note": "1-4 月平均" },
+      { "date": "2026-1~4", "scope": "具身智能", "yoy_pct": 1500, "note": "同比+15倍" }
+    ]
+  },
+  "ai_supply_demand_2026": {
+    "title": "2026 年 AI 人才供需比（脉脉口径，<1 表示紧缺）",
+    "unit": "ratio",
+    "source": "脉脉高聘人才智库《2026春招职场洞察报告》",
+    "url": "https://www.nbd.com.cn/articles/2026-05-14/4391595.html",
+    "data": [
+      { "date": "2026-1~2", "scope": "AI 整体", "value": 0.97, "note": "近供需平衡" },
+      { "date": "2026-1~4", "scope": "AI 整体", "value": 1.23, "note": "略有供过于求" },
+      { "date": "2026-1~2", "scope": "高性能计算工程师", "value": 0.15, "note": "7 岗争 1 人" },
+      { "date": "2026-1~4", "scope": "高性能计算工程师", "value": 0.26, "note": "4 岗抢 1 人" },
+      { "date": "2026-1~2", "scope": "SLAM 算法", "value": 0.21 },
+      { "date": "2026-1~2", "scope": "规控算法", "value": 0.23 }
+    ]
+  },
+  "experience_distribution_2026": {
+    "title": "2026 年新发岗位经验要求（脉脉）",
+    "unit": "%",
+    "source": "脉脉《2026年1-2月洞察》",
+    "data": [
+      { "scope": "3 年以上经验岗位占比", "value": 73.34, "note": "1-2 月" },
+      { "scope": "1 年以内经验岗位同比", "value": -20, "note": "1-2 月，去初级化" },
+      { "scope": "3-5 年经验岗位同比", "value": 19, "note": "增幅最大" }
+    ]
+  },
+  "hot_subfields_2026": {
+    "title": "2026 年高需求/高薪 AI 细分岗位（脉脉春招）",
+    "source": "脉脉《2026春招职场洞察报告》",
+    "url": "https://www.nbd.com.cn/articles/2026-05-14/4391595.html",
+    "data": [
+      { "job": "大模型算法", "hiring_index_2026": 551, "note": "热招第 1" },
+      { "job": "AI 产品经理", "hiring_index_2026": 170, "note": "热招第 5" },
+      { "job": "算法研究员", "avg_monthly_cny": 74441, "rank": 2 },
+      { "job": "AI infra", "avg_monthly_cny": 73702, "rank": 3 },
+      { "job": "大模型算法", "avg_monthly_cny": 71534, "rank": 4 },
+      { "job": "高性能计算工程师", "avg_monthly_cny": 61798, "rank": "上榜" }
+    ]
+  },
+  "ai_penetration_2026": {
+    "title": "2026 年头部公司新发岗位 AI 渗透率（脉脉）",
+    "unit": "%",
+    "source": "脉脉《2026春招职场洞察报告》",
+    "url": "https://www.nbd.com.cn/articles/2026-05-14/4391595.html",
+    "data": [
+      { "company": "面壁智能", "value": 67.97, "rank": 1 },
+      { "company": "国信普惠", "value": 64.11, "note": "金融科技" },
+      { "company": "国电通", "value": 61.41, "note": "电力" },
+      { "company": "RoboScience", "value": 55.56, "note": "智驾" },
+      { "company": "文远知行", "value": 54.19, "note": "智驾" },
+      { "company": "京东数科", "value": 53.00 },
+      { "company": "阿里云", "value": 52.09 },
+      { "company": "智谱华章", "value": 50.54 },
+      { "company": "微软", "value": 49.13 },
+      { "company": "初速度", "value": 48.60, "note": "智驾" },
+      { "company": "阶跃星辰", "value": 48.14 },
+      { "company": "深度求索", "value": 47.42 },
+      { "company": "长城汽车", "value": 43.70 },
+      { "company": "元戎启行", "value": 41.76, "note": "智驾" },
+      { "company": "卓驭", "value": 39.66, "note": "智驾" },
+      { "company": "淘天集团", "value": 39.65 },
+      { "company": "小鹏汽车", "value": 38.45, "note": "智驾" },
+      { "company": "蚂蚁集团", "value": 38.83 }
+    ]
+  },
+  "company_hiring_growth_2026q1": {
+    "title": "2026 Q1 新发岗位涨幅 TOP 企业（脉脉）",
+    "unit": "%",
+    "source": "脉脉《2026春招职场洞察报告》",
+    "url": "https://www.nbd.com.cn/articles/2026-05-14/4391595.html",
+    "data": [
+      { "company": "自变量机器人", "value": 831.88, "field": "具身智能", "rank": 1 },
+      { "company": "大疆", "value": 646.31, "field": "智能硬件", "rank": 3 },
+      { "company": "阶跃星辰", "value": 557.84, "field": "大模型", "rank": null },
+      { "company": "道通智能航空", "value": 408.51, "field": "低空经济" },
+      { "company": "面壁智能", "value": 264.29, "field": "大模型" },
+      { "company": "智元创新", "value": 209.02, "field": "具身智能", "rank": 2 },
+      { "company": "MiniMax", "value": 218.02, "field": "大模型" }
     ]
   }
 }

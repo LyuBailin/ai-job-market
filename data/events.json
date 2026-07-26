@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2026.07.25",
-    "last_updated": "2026-07-25"
+    "version": "2026.07.26",
+    "last_updated": "2026-07-26"
   },
   "events": [
     {
@@ -149,6 +149,93 @@
       "summary": "春晚带动AI/机器人企业大举招聘；宇树/银河通用/字节豆包开出>100万年薪岗位",
       "url": "https://new.qq.com/rain/a/20260225A05ZC600",
       "source": "脉脉"
+    },
+    {
+      "date": "2026-02-28",
+      "category": "policy",
+      "title": "生成式AI 累计备案 796 款（截至 2026-02-28）",
+      "summary": "2026 年 1-2 月新增 48 款备案 + 46 款登记；累计 796 款 + 481 款登记，合计 1277 款",
+      "url": "https://blog.csdn.net/2501_90325694/article/details/159249116",
+      "source": "国家网信办"
+    },
+    {
+      "date": "2026-03-09",
+      "category": "report",
+      "title": "脉脉《2026年1-2月中高端人才求职招聘洞察》",
+      "summary": "AI 岗位量同比+12倍；占新经济岗位 26.23%（2025 同期 2.29%）；AI 平均月薪 60,738 元；高性能计算工程师 7 岗争 1 人",
+      "url": "https://so.html5.qq.com/page/real/search_news?docid=70000021_11569af7f3265352",
+      "source": "脉脉高聘人才智库"
+    },
+    {
+      "date": "2026-04-20",
+      "category": "model_release",
+      "title": "月之暗面发布并开源 Kimi K2.6",
+      "summary": "迄今最强代码模型；长程编码能力提升，Agent 自主执行能力大幅增强",
+      "source": "月之暗面"
+    },
+    {
+      "date": "2026-04-30",
+      "category": "policy",
+      "title": "生成式AI 累计备案 868 款（截至 2026-04-30）",
+      "summary": "2026 年 3-4 月新增 72 款备案 + 49 款登记",
+      "url": "https://so.html5.qq.com/page/real/search_news?docid=70000021_0726a0540e614052",
+      "source": "国家网信办"
+    },
+    {
+      "date": "2026-05-06",
+      "category": "funding",
+      "title": "DeepSeek 启动首轮外部融资",
+      "summary": "国家大基金洽谈领投，估值约 450 亿美元；腾讯、阿里也洽谈参与",
+      "url": "https://blog.csdn.net/SuaniCommunity/article/details/160914349",
+      "source": "金融时报/上海证券报"
+    },
+    {
+      "date": "2026-05-07",
+      "category": "funding",
+      "title": "月之暗面完成约 20 亿美元融资",
+      "summary": "投后估值突破 200 亿美元；美团龙珠领投，水木资本、中国移动、CPE源峰参投；4 月 ARR 超 2 亿美元",
+      "url": "https://www.nbd.com.cn/articles/2026-05-14/4391595.html",
+      "source": "华峰资本/晚点LatePost"
+    },
+    {
+      "date": "2026-05-08",
+      "category": "funding",
+      "title": "阶跃星辰将完成近 25 亿美元融资",
+      "summary": "投后估值约 100 亿美元；产业链资本集中入场（华勤、龙旗、豪威、中兴）；已拆红筹结构加速赴港 IPO；HKIC 入股",
+      "url": "https://so.html5.qq.com/page/real/search_news?docid=70000021_10969fd77fa50552",
+      "source": "新民晚报/南都"
+    },
+    {
+      "date": "2026-05-13",
+      "category": "report",
+      "title": "脉脉《2026春招职场洞察报告》",
+      "summary": "2026 年 1-4 月 AI 领域岗位量同比+8.7倍；具身智能+15倍；AI 科学家/负责人平均月薪 132,796 元；大模型算法招聘指数 551 断层第一；自变量机器人招聘量同比+831.88%",
+      "url": "https://www.nbd.com.cn/articles/2026-05-14/4391595.html",
+      "source": "脉脉高聘人才智库"
+    },
+    {
+      "date": "2026-06-30",
+      "category": "policy",
+      "title": "生成式AI 累计备案 988 款（截至 2026-06-30）",
+      "summary": "2026 年 5-6 月新增 120 款备案 + 68 款登记；累计 988 款 + 598 款登记，合计 1586 款",
+      "url": "https://new.qq.com/rain/a/20260711A02HZ800",
+      "source": "国家网信办"
+    },
+    {
+      "date": "2026-07-13",
+      "category": "model_release",
+      "title": "阶跃星辰发布 AI 智能体手机 STEPX Neo",
+      "summary": "首款 AI Native 智能体手机；发布 AI 终端品牌 STEPX、智能体原生操作系统 Step AOS",
+      "url": "https://www.ofweek.com/ai/tag-%E6%89%8B%E6%9C%BA%E7%BB%88%E7%AB%AF.HTM",
+      "source": "OFweek/36氪"
+    },
+    {
+      "date": "2026-07-16",
+      "category": "policy",
+      "title": "北京累计生成式AI 备案 259 款",
+      "summary": "截至 2026-07-16，北京市单一城市累计备案 259 款生成式 AI 服务",
+      "url": "https://new.qq.com/rain/a/20260716A037CM00",
+      "source": "网信北京"
     }
   ]
 }
