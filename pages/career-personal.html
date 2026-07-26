@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>个人版职业规划 - 中国 AI 就业市场数据看板</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <style>
+    .career-hero {
+      position: relative;
+      padding: 80px 32px 64px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #3b82f6 100%);
+      color: #fff;
+      border-radius: 14px;
+      margin-bottom: 32px;
+      overflow: hidden;
+    }
+    .career-hero::before {
+      content: "";
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.35) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .career-hero::after {
+      content: "";
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .career-hero .eyebrow {
+      font-size: 13px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .career-hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .career-hero .sub {
+      font-size: 17px;
+      opacity: 0.92;
+      max-width: 720px;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+    .career-hero .profile {
+      display: flex;
+      gap: 28px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .career-hero .profile-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      opacity: 0.92;
+    }
+    .career-hero .profile-item strong {
+      color: #fbbf24;
+      font-weight: 600;
+    }
+    .career-hero .stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 28px;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+    .career-hero .stat-num {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fbbf24;
+      letter-spacing: -0.02em;
+    }
+    .career-hero .stat-label {
+      font-size: 12px;
+      opacity: 0.78;
+      margin-top: 4px;
+    }
+
+    .path-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .path-card:hover {
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      transform: translateY(-2px);
+    }
+    .path-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+    }
+    .path-card.safe::before { background: #16a34a; }
+    .path-card.breakthrough::before { background: #f59e0b; }
+    .path-card.explore::before { background: #8b5cf6; }
+    .path-card.recommended::before { background: #2c5cff; width: 6px; }
+
+    .path-emoji {
+      font-size: 28px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .path-name {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .path-name .badge-rec {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 1px 6px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 3px;
+      font-size: 10px;
+      vertical-align: 1px;
+    }
+    .path-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .path-salary {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+      margin: 8px 0 16px;
+    }
+    .path-salary .period {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+    .path-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .path-milestones {
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .path-milestones .label {
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .path-milestones li {
+      margin: 4px 0;
+      padding-left: 18px;
+      position: relative;
+    }
+    .path-milestones li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .scene {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      color: #f1f5f9;
+      border-radius: 12px;
+      padding: 48px 40px;
+      margin: 32px 0;
+    }
+    .scene-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(245, 158, 11, 0.2);
+      color: #fbbf24;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+    .scene-title {
+      font-size: 14px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+    }
+    .scene-text {
+      font-size: 17px;
+      line-height: 1.85;
+      color: #f1f5f9;
+      font-weight: 300;
+      max-width: 760px;
+    }
+    .scene-text p {
+      margin-bottom: 16px;
+    }
+    .scene-text strong {
+      color: #fbbf24;
+      font-weight: 500;
+    }
+    .scene-text em {
+      color: #94a3b8;
+      font-style: normal;
+    }
+
+    .gap-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .gap-table th {
+      text-align: left;
+      padding: 10px 12px;
+      background: var(--bg-elevated);
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .gap-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-primary);
+      vertical-align: top;
+    }
+    .gap-priority {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .priority-high { background: #fee2e2; color: #dc2626; }
+    .priority-med { background: #fef3c7; color: #b45309; }
+    .priority-low { background: #dcfce7; color: #15803d; }
+
+    .timeline-card {
+      border-left: 3px solid var(--accent);
+      padding: 12px 16px;
+      margin: 12px 0;
+      background: var(--bg-elevated);
+      border-radius: 0 6px 6px 0;
+    }
+    .timeline-card .phase {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .timeline-card .actions {
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 900px) {
+      .career-hero h1 { font-size: 32px; }
+      .career-hero .sub { font-size: 15px; }
+      .career-hero .stats { gap: 20px; }
+      .career-hero .stat-num { font-size: 22px; }
+      .scene { padding: 32px 20px; }
+      .scene-text { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="dot"></span>中国 AI 就业市场<span class="sub">数据看板</span></div>
+      <nav class="nav">
+        <a href="../index.html">总览</a>
+        <a href="jobs.html">岗位供需</a>
+        <a href="salary.html">薪资行情</a>
+        <a href="companies.html">公司动态</a>
+        <a href="cities.html">城市分布</a>
+        <a href="policies.html">政策报告</a>
+        <a href="timeline.html">大事记</a>
+        <a href="global.html">海外速览</a>
+        <details class="nav-dropdown">
+          <summary>📌 更多</summary>
+          <div class="dropdown-menu">
+            <a href="report-llm-market.html"><span class="ico">📊</span>LLM 人才市场报告</a>
+            <a href="career-guide.html"><span class="ico">🎯</span>公开版职业规划</a>
+            <a href="career-personal.html" class="active"><span class="ico">⭐</span>个人版职业规划</a>
+          </div>
+        </details>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 顶部：用户档案 -->
+    <div class="career-hero">
+      <div class="eyebrow">个人版 · 针对你的情况定制</div>
+      <h1>你 的 AI 行 业 之 路</h1>
+      <div class="sub">
+        基于 2026 H1 中国 LLM 人才市场真实数据，针对<strong>你的背景（港中文机械自动化硕士 + 华为 AI 应用开发实习）</strong>做的 3 年规划。
+      </div>
+      <div class="profile">
+        <div class="profile-item">🎓 <strong>中山大学</strong> 智能科学本科</div>
+        <div class="profile-item">🎓 <strong>港中文</strong> 机械自动化硕士</div>
+        <div class="profile-item">💼 <strong>华为</strong> AI 应用开发实习（1 个月）</div>
+        <div class="profile-item">📅 <strong>2026-11</strong> 毕业</div>
+        <div class="profile-item">🎯 <strong>港中文博士 RAG</strong> 项目经验</div>
+      </div>
+      <div class="stats">
+        <div>
+          <div class="stat-num">3 条</div>
+          <div class="stat-label">针对性路径</div>
+        </div>
+        <div>
+          <div class="stat-num">4 个月</div>
+          <div class="stat-label">距离毕业</div>
+        </div>
+        <div>
+          <div class="stat-num">15级</div>
+          <div class="stat-label">华为留用目标</div>
+        </div>
+        <div>
+          <div class="stat-num">2.5-4万</div>
+          <div class="stat-label">期望月薪</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 关键问题澄清 -->
+    <div class="card" style="border-left: 4px solid #f59e0b;">
+      <div class="card-title">⚠️ 在开始前，先把几个关键事实说清楚</div>
+      <div class="prose" style="font-size: 13.5px; line-height: 1.85; color: var(--text-secondary);">
+        <p><strong>关于"华为 15 级"：</strong>15 级在华为是 senior 工程师级别，对应 <strong>2-3 年工作经验</strong>。<strong>2026 年校招硕士进华为通常是 13 / 14 级，15 级是凤毛麟角</strong>。如果你坚持要 15 级留用，那本质上是"赌一个非常规结果"——成功率 5-15%。</p>
+        <p><strong>关于"工业级大项目"：</strong>你目前主要是<strong>港中文博士合作的胃癌分期 RAG 项目</strong> + 个人小项目。AI 应用开发岗面试非常看重<strong>工业级大项目经验</strong>（高并发、高可用、大流量场景）。这是你简历上最明显的短板。</p>
+        <p><strong>关于"知识平台 / PRD / 知识库"方向：</strong>你现在的实习方向更偏向 <strong>AI 产品 / AI 项目管理</strong>，而不是纯 AI 应用开发。这条路走深了，可以成为稀缺人才；但如果想做"AI 工程师"（写代码为主），会偏离一些。</p>
+      </div>
+    </div>
+
+    <!-- 3 条路径 -->
+    <h2 style="font-size: 22px; font-weight: 600; margin-bottom: 8px;">3 条路径（按推荐顺序）</h2>
+    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px;">
+      基于你的<strong>求稳 + 一点风险 + 薪资 2.5-4 万 + 业务理解力（PRD）</strong>背景，每条路径都有明确的 3 年后目标、关键里程碑和风险点。
+    </p>
+
+    <div class="grid-3">
+      <!-- 🛡️ 稳健路径：推荐 -->
+      <div class="path-card safe recommended">
+        <span class="path-emoji">🛡️</span>
+        <div class="path-name">稳健路径 <span class="badge-rec">最推荐</span></div>
+        <div class="path-title">腾讯 AI 应用开发工程师</div>
+        <div class="path-salary">3-3.5万<span class="period">/月 → 3年后 6-8万/月</span></div>
+        <div class="path-desc">
+          <strong>为什么最推荐你：</strong>完美匹配你的"求稳 + 薪资期望 + 港中文硕士背景 + 业务理解能力"。腾讯工作强度中等，加班可控（相对字节/华为），有鹅厂品牌+稳定晋升通道。
+        </div>
+        <div class="path-milestones">
+          <div class="label">3 个关键里程碑</div>
+          <ul>
+            <li>Y0（4 个月内）：拿到腾讯 offer，作为毕业第一站</li>
+            <li>Y1：从 T10 升 T11（常规晋升），年包 45-55 万</li>
+            <li>Y2-Y3：成为小组核心技术骨干 / 跨部门项目 PM，年包 80-110 万</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 🚀 突破路径：华为留用 -->
+      <div class="path-card breakthrough">
+        <span class="path-emoji">🚀</span>
+        <div class="path-name">突破路径</div>
+        <div class="path-title">华为留用（13/14 级正常路径）</div>
+        <div class="path-salary">2.5-3万<span class="period">/月 → 3年后 5-7万/月</span></div>
+        <div class="path-desc">
+          <strong>客观现实：</strong>你作为硕士应届进华为，大概率是 <strong>13-14 级</strong>（15 级是 senior 级，不要抱这个期望）。优势：业务能深入 + 接触大模型/昇腾/盘古底层技术；劣势：工作强度大、晋升节奏慢。
+        </div>
+        <div class="path-milestones">
+          <div class="label">3 个关键里程碑</div>
+          <ul>
+            <li>Y0：拿 13-14 级 offer（合理预期，不是 15）</li>
+            <li>Y1-Y2：适应华为节奏，主导 1 个核心项目</li>
+            <li>Y3：争取 16 级（不是 15），有内部转岗或跳板机会</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 🌟 探索路径：AI 产品经理 -->
+      <div class="path-card explore">
+        <span class="path-emoji">🌟</span>
+        <div class="path-name">探索路径</div>
+        <div class="path-title">AI 产品经理（结合技术背景）</div>
+        <div class="path-salary">3-4万<span class="period">/月 → 3年后 7-10万/月</span></div>
+        <div class="path-desc">
+          <strong>为什么值得考虑：</strong>你现在在华为做的"知识平台 + PRD + 知识库"其实就是 AI 产品经理的工作！技术背景的 AI 产品经理在 2026 年极度稀缺，薪资上限比纯技术岗更高，且更符合你"求稳 + 影响力"的需求。
+        </div>
+        <div class="path-milestones">
+          <div class="label">3 个关键里程碑</div>
+          <ul>
+            <li>Y0：决定从"AI 开发"转型"AI 产品"，投递产品岗</li>
+            <li>Y1：进入大厂（腾讯/字节/美团）AI 产品岗，年包 50-70 万</li>
+            <li>Y2-Y3：成为某 AI 业务线 PM，年包 100-150 万</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 年后的某一天 -->
+    <h2 style="font-size: 22px; font-weight: 600; margin: 40px 0 8px;">3 年后的某一天</h2>
+    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 8px;">
+      沉浸式预览 3 条路径下，2029 年的你可能过的生活。
+    </p>
+
+    <div class="scene">
+      <span class="scene-tag">场景 1 · 稳健路径</span>
+      <div class="scene-title">3 年后，腾讯 AI 应用开发组长</div>
+      <div class="scene-text">
+        <p>2029 年 11 月的一个周三早上 7 点 30 分，深圳南山科技园的腾讯大厦。<strong>你住在 3 公里外的蛇口</strong>，走路 25 分钟到公司，每天 9 点前到工位——这个习惯从 2026 年入职第一天保持到现在。</p>
+        <p>8 点 50 分，你打开企业微信扫了一眼，<strong>昨晚产品发的 PRD 你已经用 Cursor 在 20 分钟内改完了</strong>——RAG 模块的检索精度优化和 prompt 模板调整，对你来说已经是肌肉记忆。</p>
+        <p>10 点，你和 2 个下属（一个校招第 1 年的 T10，一个跳槽来的 3 年经验 T11）开周会。<strong>你在腾讯第 3 年了，去年晋升 T12</strong>，现在管 3 人小团队。今天要 review 他们做的"AI 客服智能体 v2.0"的方案。</p>
+        <p>下午 4 点，跨部门会议。你代表 AI 应用组和微信支付团队讨论一个联合项目：<strong>把大模型能力嵌入支付场景的智能客服</strong>。3 年前你可能只是会议室里最年轻的旁听者，现在你能在 30 分钟会议里推动决策。</p>
+        <p>晚上 7 点半，你下班了。<strong>今天没有加班</strong>——腾讯的节奏比字节和华为都温和，你得以在三年里保持健康和业余时间。回家路上你打开手机，看到 4 月份到账的月工资 7.2 万，股票和年终另算。你想起 3 年前 11 月毕业时那个焦虑的男孩——如果他能看到现在的你，大概会松一口气吧。</p>
+      </div>
+    </div>
+
+    <div class="scene">
+      <span class="scene-tag">场景 2 · 突破路径</span>
+      <div class="scene-title">3 年后，华为 AI 平台工程师（14 级）</div>
+      <div class="scene-text">
+        <p>2029 年 11 月的某个周日晚上 10 点半，深圳坂田华为基地。<strong>你 26 岁，14 级，工作第 3 年</strong>，月薪 3.2 万 + 年终奖，年包 50 万左右。</p>
+        <p>今晚在加班。明天要给运营商客户演示一个基于盘古大模型的知识库系统——这是你过去半年主导的项目。<strong>3 年前你以为 15 级是留用目标</strong>，入职时被告知是 14 级，失落了 2 周。后来你想通了：<em>15 级对应 2-3 年经验，你用 3 年时间真的能挣到那个级别</em>。现在你正为 16 级做准备。</p>
+        <p>2026 年 11 月毕业时你 23 岁，第一年适应华为的狼性文化差点离职——<strong>那个跟你同一批入职的港大硕士</strong>，3 个月就走了。留下来的原因很简单：你发现华为能给你<em>接触到大厂不碰的底层技术</em>（昇腾算子优化、盘古行业大模型的微调），这些在市场上几乎没有替代品。</p>
+        <p>你开始认真想：<em>3 年后是继续在华为做 17 级 PL（项目 leader），还是带着"既懂底层又懂业务"的标签跳出去？</em>现在你 26 岁，房贷压力不大，决定再熬 2 年看看。</p>
+      </div>
+    </div>
+
+    <div class="scene">
+      <span class="scene-tag">场景 3 · 探索路径</span>
+      <div class="scene-title">3 年后，AI 产品经理</div>
+      <div class="scene-text">
+        <p>2029 年 11 月的某个周四下午 3 点，深圳南山某 AI 独角兽（阶跃或月之暗面）总部。<strong>你是 AI 智能座舱产品负责人，管 2 个 PM 和 1 个设计师</strong>。</p>
+        <p>3 年前那个决定"从开发转产品"的夜晚你还记得。起因是 2027 年 3 月，你在华为做知识平台时发现：<em>你 70% 的时间在写 PRD、协调资源、对接客户，技术只占 30%</em>。你问自己：既然如此，为什么不直接做 AI 产品？</p>
+        <p>2027 年 6 月，你跳到这家独角兽，<strong>起薪 3.5 万 + 期权</strong>。前 6 个月你从"技术思维"转向"产品思维"——这是最痛苦的阶段：你写的 PRD 工程师看不懂，你提出的方案技术不可行。直到你学会<em>用"用户故事 + 业务指标"而非"技术架构图"表达需求</em>。</p>
+        <p>2028 年底，你主导的智能座舱 Agent 模块成功集成到 3 家车企，<strong>为公司带来 8000 万年收入</strong>。老板给你的年终奖 + 股权兑现，相当于 100 万。</p>
+        <p>现在你的下一步：<em>是继续在大厂/独角兽做 AI 产品线 PM，还是跳到一家传统车企（比亚迪/小鹏）做 AI 业务负责人？</em>前者工资高、后者有股权和行业资源。你在考虑。</p>
+      </div>
+    </div>
+
+    <!-- 能力雷达 -->
+    <h2 style="font-size: 22px; font-weight: 600; margin: 40px 0 8px;">能力雷达</h2>
+    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">
+      你目前的实际能力 vs 3 条路径的目标要求（10 分制评估）。
+    </p>
+
+    <div class="card">
+      <div class="chart tall" id="chart-radar"></div>
+    </div>
+
+    <div class="card" style="margin-top: 16px;">
+      <div class="card-title">能力现状（基于你的实际背景）</div>
+      <div class="table-wrap">
+        <table class="gap-table">
+          <thead>
+            <tr>
+              <th>能力维度</th>
+              <th class="num">你现在的水平</th>
+              <th>说明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>编程能力</td>
+              <td class="num">7/10</td>
+              <td>硕士项目经验够用，工业级项目少</td>
+            </tr>
+            <tr>
+              <td>数学 / 算法基础</td>
+              <td class="num">5/10</td>
+              <td>智能科学本科 + 机械自动化硕士，ML 基础中等</td>
+            </tr>
+            <tr>
+              <td>业务理解 / PRD 写作</td>
+              <td class="num">8/10</td>
+              <td>华为实习已有 PRD 实战经验，<strong>这是你的核心优势</strong></td>
+            </tr>
+            <tr>
+              <td>工业级大项目经验</td>
+              <td class="num">4/10</td>
+              <td>港中文 RAG + 个人小项目，缺乏大厂级高并发经验</td>
+            </tr>
+            <tr>
+              <td>AI 应用工程化</td>
+              <td class="num">6/10</td>
+              <td>RAG 做过，但不熟悉大厂级工程化（微服务、CI/CD、可观测性）</td>
+            </tr>
+            <tr>
+              <td>沟通协调 / 跨团队</td>
+              <td class="num">7/10</td>
+              <td>在华为做知识平台协调过业务方</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 技能差距 -->
+    <h2 style="font-size: 22px; font-weight: 600; margin: 40px 0 8px;">技能差距分析（按优先级）</h2>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table class="gap-table">
+          <thead>
+            <tr>
+              <th>技能差距</th>
+              <th>优先级</th>
+              <th>影响哪条路径</th>
+              <th>补齐建议</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>工业级大项目经验（高并发/大流量/微服务）</td>
+              <td><span class="gap-priority priority-high">高</span></td>
+              <td>稳健 / 突破</td>
+              <td>面试前 1 个月做 1 个 mock 项目；或者在华为实习争取参与</td>
+            </tr>
+            <tr>
+              <td>大模型工程化（LangChain / LlamaIndex / RAG 优化 / Agent 框架）</td>
+              <td><span class="gap-priority priority-high">高</span></td>
+              <td>全部 3 条</td>
+              <td>4 个月内做 2-3 个 demo：RAG / Agent / Prompt 工程</td>
+            </tr>
+            <tr>
+              <td>算法 / 数学深度（Transformer / RLHF / 推理优化）</td>
+              <td><span class="gap-priority priority-med">中</span></td>
+              <td>突破（算法岗）</td>
+              <td>稳健 / 探索 不强求；突破路径需要 3-6 个月深耕</td>
+            </tr>
+            <tr>
+              <td>AI 产品方法论（用户故事 / OKR / 增长漏斗）</td>
+              <td><span class="gap-priority priority-med">中</span></td>
+              <td>探索（产品）</td>
+              <td>读《俞军产品方法论》+ 体验 10 个 AI 产品</td>
+            </tr>
+            <tr>
+              <td>系统设计（高可用 / 分布式）</td>
+              <td><span class="gap-priority priority-med">中</span></td>
+              <td>稳健 / 突破</td>
+              <td>刷《数据密集型应用系统设计》+ 准备 1-2 道系统设计题</td>
+            </tr>
+            <tr>
+              <td>学术论文 / 顶会发表（加分项，非必需）</td>
+              <td><span class="gap-priority priority-low">低</span></td>
+              <td>突破</td>
+              <td>突破路径才需要；其他路径加分但不必要</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 行动建议 -->
+    <h2 style="font-size: 22px; font-weight: 600; margin: 40px 0 8px;">行动建议（6/12/24 月）</h2>
+
+    <div class="card">
+      <div class="card-title">⏱ 短期：未来 4 个月（毕业前）</div>
+      <div class="timeline-card">
+        <div class="phase">决策（2 周内）</div>
+        <div class="actions">
+          跟华为主管聊<strong>真实预期级别</strong>。如果确定是 13-14 级，提前启动外部投递；如果争取 15 级，准备答辩材料（论文/项目/答辩 PPT）。<strong>不要等 11 月才决定</strong>，越晚越被动。
+        </div>
+      </div>
+      <div class="timeline-card">
+        <div class="phase">刷题 + 项目（4-8 周）</div>
+        <div class="actions">
+          LeetCode 100-150 题（重点：图、DP、SQL、系统设计）。同时做 <strong>2-3 个可演示的 AI 应用 demo</strong>（RAG 知识库、Agent 工具调用、Prompt 模板工具）。GitHub 公开，README 写清楚。
+        </div>
+      </div>
+      <div class="timeline-card">
+        <div class="phase">投递（毕业前 1-2 个月）</div>
+        <div class="actions">
+          <strong>优先投递腾讯/字节/阿里/美团</strong>的 AI 应用开发岗。同时投 1-2 家创业公司（阶跃/MiniMax/智元）作为 backup。避免只投华为一家。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⏱ 中期：毕业后 1 年（2026-2027）</div>
+      <div class="timeline-card">
+        <div class="phase">选好赛道</div>
+        <div class="actions">
+          在公司里主动承担 <strong>1 个核心项目</strong>（不是打杂）。观察 3-6 个月判断公司/团队/赛道是否值得长期投入。如果不对，趁早换。
+        </div>
+      </div>
+      <div class="timeline-card">
+        <div class="phase">积累作品</div>
+        <div class="actions">
+          <strong>技术博客 / GitHub / 内部分享</strong>，每季度 1 次对外输出。这是你 3 年后跳槽/晋升的最佳筹码。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⏱ 长期：毕业后 2-3 年（2028-2029）</div>
+      <div class="timeline-card">
+        <div class="phase">第一次选择</div>
+        <div class="actions">
+          <strong>3 年后你会有 3 个选项：</strong>① 在现公司晋升 senior ② 跳到更好的平台 ③ 转型（产品/创业/读博）。不要等到第 4 年才想，第 2 年末就要开始有意识地准备。
+        </div>
+      </div>
+      <div class="timeline-card">
+        <div class="phase">个人品牌</div>
+        <div class="actions">
+          <strong>技术影响力 = 议价能力</strong>。持续输出（博客/GitHub/演讲），让你的名字在 AI 应用开发圈子里"被认识"。这是 3 年后跨级跳槽的唯一杠杆。
+        </div>
+      </div>
+    </div>
+
+    <!-- 关于"留华为还是跳"的直接建议 -->
+    <div class="card" style="border-left: 4px solid #2c5cff; background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);">
+      <div class="card-title" style="color: var(--accent);">💡 关于你"留华为还是跳"的纠结——我的建议</div>
+      <div class="prose" style="font-size: 14px; line-height: 1.85; color: var(--text-primary);">
+        <p><strong>如果你在华为被定级 14 级：</strong>建议<strong>跳腾讯</strong>。原因：① 腾讯 14-15 级对硕士应届是可能的（特别是 985/港校背景），薪资起点可能高 5-10K ② 腾讯工作强度小于华为，生活质量更好 ③ 鹅厂品牌在 AI 产品 / 商业化场景更接地气。</p>
+        <p><strong>如果你在华为被定级 13 级：</strong><strong>坚决跳</strong>。13 级对应届硕偏低（特别是港中文硕士），低于市场 20-30%。腾讯 T10/T11 至少能保 25-35K 起步。</p>
+        <p><strong>只有一种情况考虑留华为：</strong>你被分到了 <strong>盘古 / 昇腾 / 鸿蒙</strong>等核心战略业务，且能拿到 <strong>14 级及以上 + 股权 / TUP</strong>，且主管承诺 2 年内晋升。否则腾讯是更稳妥的选择。</p>
+        <p><strong>4 个月内要做的事：</strong> ① 跟主管谈定级预期 ② 启动腾讯/字节/美团投递（早投不亏） ③ 拿 2-3 个 offer 后比较 ④ 11 月之前做最终决策，不要拖到毕业前 1 周。</p>
+      </div>
+    </div>
+
+    <!-- 数据来源 -->
+    <div class="card" style="margin-top: 24px;">
+      <div class="card-title">数据来源与依据</div>
+      <div class="prose" style="font-size: 12px; color: var(--text-secondary); line-height: 1.8;">
+        <p>本页所有结论基于以下公开数据 + 你的实际背景：</p>
+        <ul>
+          <li>脉脉《2026春招职场洞察报告》— 大厂定级、薪资区间、加班强度</li>
+          <li>智联招聘 + 北大国发院《AI大模型对我国劳动力市场潜在影响研究：2024》— 城市/学历溢价</li>
+          <li>BOSS直聘《2026人才趋势报告》— 跨行业 AI 渗透、定级分布</li>
+          <li>前程无忧 51job《2026届校招市场AI人才需求报告》— 校招薪资中位数</li>
+          <li>华为 2025 校招公开信息（13/14/15 级对应届硕的典型定级）</li>
+          <li>腾讯 2025 校招公开信息（T10/T11/T12 对应月薪范围）</li>
+          <li>智联 / 拉勾 / BOSS直聘 关于工业级大项目经验的面试权重</li>
+        </ul>
+        <p style="margin-top: 12px;"><strong>本页面仅做事实呈现 + 针对你情况的参考建议，</strong>不构成最终职业决策。具体选择应结合你的实际 offer、面试体验和直觉判断。</p>
+      </div>
+    </div>
+
+    <!-- 接下来：未来镜像对话 -->
+    <div class="card" style="margin-top: 24px; background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%); border-left: 4px solid #0ea5e9;">
+      <div class="card-title" style="color: #0369a1;">⏭️ 下一步：未来镜像对话</div>
+      <div class="prose" style="font-size: 14px; line-height: 1.85; color: var(--text-primary);">
+        <p>看完 3 条路径和 3 年后场景后，<strong>告诉我你想"走"哪一条</strong>。</p>
+        <p>选好后，我会扮演<strong>"3 年后走完了这条路的那个人"</strong>，跟你对话——聊这 3 年发生了什么、踩过什么坑、最重要的决定是什么、有什么后悔/感恩的事。</p>
+        <p>对话结束后，我会把对话内容改写成<strong>一封来自未来的信</strong>，并生成一个沉浸式 HTML 信件页面（点击火漆 → 信封打开 → 信件展开阅读）。</p>
+        <p style="margin-top: 12px;"><strong>你想选哪条？</strong></p>
+        <ul>
+          <li>A. 🛡️ <strong>稳健路径</strong>：腾讯 AI 应用开发组长</li>
+          <li>B. 🚀 <strong>突破路径</strong>：华为 14 级（不赌 15 了）</li>
+          <li>C. 🌟 <strong>探索路径</strong>：转型 AI 产品经理</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <a href="https://lyubailin.github.io/ai-job-market/">中国 AI 就业市场数据看板</a> · 个人版职业规划 · 基于 2026 H1 真实数据
+  </footer>
+
+  <script src="../assets/js/charts.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (function() {
+      // 能力雷达图
+      const chart = echarts.init(document.getElementById('chart-radar'));
+      const option = {
+        color: CHART_PALETTE,
+        backgroundColor: '#fff',
+        textStyle: { color: CHART_TEXT, fontFamily: 'inherit' },
+        tooltip: {},
+        legend: {
+          data: ['你的现状', '稳健路径目标', '突破路径目标', '探索路径目标'],
+          bottom: 0,
+          textStyle: { color: CHART_TEXT, fontSize: 12 },
+        },
+        radar: {
+          indicator: [
+            { name: '编程能力', max: 10 },
+            { name: '业务理解 / PRD', max: 10 },
+            { name: '工业级大项目', max: 10 },
+            { name: '大模型工程化', max: 10 },
+            { name: '算法 / 数学', max: 10 },
+            { name: '跨团队沟通', max: 10 }
+          ],
+          splitArea: { areaStyle: { color: ['rgba(44, 92, 255, 0.04)', 'rgba(44, 92, 255, 0.08)'] } },
+          axisLine: { lineStyle: { color: 'rgba(0, 0, 0, 0.08)' } },
+          splitLine: { lineStyle: { color: 'rgba(0, 0, 0, 0.08)' } },
+          name: { textStyle: { color: CHART_TEXT, fontSize: 12 } }
+        },
+        series: [{
+          type: 'radar',
+          data: [
+            {
+              value: [7, 8, 4, 6, 5, 7],
+              name: '你的现状',
+              lineStyle: { color: CHART_PALETTE[5] },
+              areaStyle: { color: 'rgba(107, 114, 128, 0.15)' }
+            },
+            {
+              value: [8, 9, 7, 8, 6, 8],
+              name: '稳健路径目标',
+              lineStyle: { color: CHART_PALETTE[1] },
+              areaStyle: { color: 'rgba(22, 163, 74, 0.15)' }
+            },
+            {
+              value: [8, 7, 8, 9, 9, 7],
+              name: '突破路径目标',
+              lineStyle: { color: CHART_PALETTE[3] },
+              areaStyle: { color: 'rgba(245, 158, 11, 0.15)' }
+            },
+            {
+              value: [6, 10, 5, 7, 5, 10],
+              name: '探索路径目标',
+              lineStyle: { color: CHART_PALETTE[7] },
+              areaStyle: { color: 'rgba(139, 92, 246, 0.15)' }
+            }
+          ]
+        }]
+      };
+      chart.setOption(option);
+      window.addEventListener('resize', () => chart.resize());
+    })();
+  </script>
+</body>
+</html>
