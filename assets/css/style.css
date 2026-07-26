@@ -105,6 +105,72 @@ a:hover { text-decoration: underline; }
   background: var(--accent-soft);
   color: var(--accent);
 }
+
+/* ========== 下拉菜单 ========== */
+.nav-dropdown {
+  position: relative;
+}
+.nav-dropdown > summary {
+  list-style: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  user-select: none;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.nav-dropdown > summary::-webkit-details-marker { display: none; }
+.nav-dropdown > summary::after {
+  content: "▾";
+  font-size: 9px;
+  color: var(--text-muted);
+  transition: transform 0.15s;
+}
+.nav-dropdown[open] > summary {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+.nav-dropdown[open] > summary::after { transform: rotate(180deg); }
+.nav-dropdown > summary:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+.nav-dropdown .dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 220px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.1);
+  padding: 6px;
+  z-index: 200;
+}
+.nav-dropdown .dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+.nav-dropdown .dropdown-menu a:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+  text-decoration: none;
+}
+.nav-dropdown .dropdown-menu a .ico {
+  font-size: 16px;
+  flex-shrink: 0;
+}
 .meta {
   font-size: 12px;
   color: var(--text-muted);
